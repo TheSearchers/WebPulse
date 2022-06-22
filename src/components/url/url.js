@@ -1,13 +1,16 @@
 import React from "react";
+import { MDBInput } from 'mdb-react-ui-kit';
+import "./url.css";
 
 const UrlInput = ({ url, setUrl,method, setMethod }) => {
   return (
     <React.Fragment>
       <div className="d-flex flex-row input-group mb-4  justify-content-center">
+       <div className="url">
         <span className="input-group-text" id="basic-addon1">
           URL
         </span>
-        <input
+        <input 
           type="text"
           className="form-control"
           placeholder="url"
@@ -16,6 +19,7 @@ const UrlInput = ({ url, setUrl,method, setMethod }) => {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
+        </div> 
         <select
           className="form-select"
           value={method}
