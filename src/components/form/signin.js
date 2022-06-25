@@ -12,7 +12,7 @@ const auth=useContext(LoginContext)
 const [logInInfo,setLogInInfo]=useState({
   email:"",
   password:"",
-  
+  // state:"true",
 })
 const handleChange=(event)=>{
   event.preventDefault();
@@ -22,6 +22,7 @@ const handelLogIn=(e)=>{
   e.preventDefault();
   if(logInInfo.password!==""&&logInInfo.password!==null&&logInInfo.email!==null&&logInInfo.email!==""){
     auth.login(logInInfo);
+    setLogInInfo({})
   }
 }
 // const handelLogIn=(e)=>{

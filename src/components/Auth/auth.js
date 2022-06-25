@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import superagent from 'superagent';
 import jwt from 'jwt-decode';
 import cookie from 'react-cookies';
-
+import base64 from 'base-64';
 import swal from 'sweetalert';
 
 
-const API = `http://localhost:4000`;
+const API = `http://localhost:3000`;
 export const LoginContext = React.createContext();
 
 export default function LoginProvider(props) {
@@ -26,7 +26,9 @@ export default function LoginProvider(props) {
     const login = async (userInfo) => {
         // localhost:3030/signin
         console.log(userInfo);
-        const response = await superagent.post(`${API}/login`).send(userInfo);
+        // const response = await superagent.post(`${API}/login`).send(userInfo);
+        const response = await superagent.post(`${API}/login`).set('authorization', `Basic ${base64.encode(`${userInfo.email}:${userInfo.password}`)}`);
+        // const updatedresponse = await superagent.put(`${API}/users`).send(userInfo);
         console.log('inside login >> response', response);//userInfo + token
         if(response.text==="invalid login Password"||response.text==='invalid login Username'){
             swal( "You signed in wrongly, please sign in whith correct info ");

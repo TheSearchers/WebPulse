@@ -1,6 +1,6 @@
 
 import './App.css';
-import Header from "./components/header/index"
+import Header from "./components/header/header"
 import Signin from "./components/form/signin"
 import Signup from "./components/form/signup"
 import LoginProvider from './components/Auth/auth';

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
-import '../../App.css'
+import './Chat.css'
 import io from "socket.io-client"
 // import TextField from "@material-ui/core/TextField"
 import TextField from '@mui/material/TextField';
@@ -17,7 +17,7 @@ const [ state, setState ] = useState({ message: "", name: "" })
   
   useEffect(
     () => {
-      socketRef.current = io.connect(`http://localhost:4000`)
+      socketRef.current = io.connect(`http://localhost:3000`)
       socketRef.current.on("message", ({ name, message }) => {
         setChat([ ...chat, { name, message } ])
       })

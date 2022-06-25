@@ -75,7 +75,7 @@ export default function Register() {
           </select>
           <br></br> */}
           
-          <button type="submit" onClick={handelSubmit} className="btn btn-success" style={{marginTop:"20px"}}>
+          <button type="submit" onClick={handelSubmit} className="btn btn-success" style={{marginTop:"20px",justifyItems:"center"}}>
             Signup
           </button>
           <br/>
