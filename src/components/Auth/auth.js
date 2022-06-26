@@ -7,7 +7,7 @@ import cookie from 'react-cookies';
 import swal from 'sweetalert';
 
 
-const API = `http://localhost:4000`;
+const API = `http://localhost:3000`;
 export const LoginContext = React.createContext();
 
 export default function LoginProvider(props) {
