@@ -1,7 +1,8 @@
 .full-width {
   width: 100%;
 }
+
 .full-width button {
   width: 100%;
-
+  margin-left: 0;
 }

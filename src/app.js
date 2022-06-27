@@ -8,7 +8,7 @@ import Signup from "./components/form/signup";
 import LoginProvider from "./components/Auth/auth";
 import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
-import message from "./components/assets/message.gif"
+import message from "./components/assets/message.gif";
 //import ChatSection from "./components/ChatSection/ChatSection";
 
 //--------------------------
@@ -17,16 +17,12 @@ import ChatPage from "./components/Chat/ChatPage";
 import LoginTest from "./components/Chat/Login";
 import {
   WorkSpaceForm,
-
   History,
   ResponseTable,
   RequestTable,
   UrlInput,
   Footer,
-  
 } from "./all";
-
-
 
 import socket from "./socket";
 //---------------------------
@@ -34,7 +30,7 @@ toast.configure();
 
 const App = () => {
   //-----------------------------
-  //chat 
+  //chat
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [usersList, addUsers] = useState([]);
@@ -42,7 +38,7 @@ const App = () => {
 
   const getUsername = (fetched_userName) => {
     setUserName(fetched_userName);
-//socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected. 
+    //socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected.
     socket.auth = { fetched_userName };
     socket.connect();
   };
@@ -160,14 +156,16 @@ const App = () => {
           <Signin />
           <Signup />
           {/* </When> */}
-         
         </LoginProvider>
 
-        <div className="row justify-content-center g-5"
-        style={{
-          display : 'flex',
-          justifyContent: 'center'
-        }}>
+        <div
+          className="row justify-content-center g-5"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "0px",
+          }}
+        >
           <div className="col-4">
             <History
               history={history}
@@ -179,8 +177,6 @@ const App = () => {
             />
 
             <WorkSpaceForm />
-  
-  
           </div>
           <div className="col">
             <div className="d-flex flex-column justify-content-between align-items-center">
@@ -207,27 +203,30 @@ const App = () => {
             </div>
           </div>
         </div>
-
       </div>
-{/* chat  */}
-{show?
-  <div  stclassName="App" style={
-    {
-     width:'30'
-    }
-  }>
-      {!userName ? (
-        <LoginTest submit={(event) => getUsername(event)} />
-      ) : (
-        <ChatPage user={userName} connectedUsers={usersList} />
-      )}
-    </div>:null
-
-      }
-    {/* chat */}
-    <img src={message}
-alt="" width="100px" height="100px" 
- onClick={()=>setShow(!show)}></img>
+      {/* chat  */}
+      {show ? (
+        <div
+          stclassName="App"
+          style={{
+            width: "30",
+          }}
+        >
+          {!userName ? (
+            <LoginTest submit={(event) => getUsername(event)} />
+          ) : (
+            <ChatPage user={userName} connectedUsers={usersList} />
+          )}
+        </div>
+      ) : null}
+      {/* chat */}
+      <img
+        src={message}
+        alt=""
+        width="100px"
+        height="100px"
+        onClick={() => setShow(!show)}
+      ></img>
       <Footer />
     </React.Fragment>
   );

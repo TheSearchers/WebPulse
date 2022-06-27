@@ -1,0 +1,49 @@
+button.react-responsive-modal-closeButton {
+  height: 29px !important;
+}
+
+.singin-div {
+  text-align: center;
+  width: 600px;
+}
+
+.singin-div form {
+  width: 100%;
+  margin: 0;
+  display: inline-block;
+  box-shadow: none;
+  border-radius: unset;
+  padding: 0;
+  max-width: 100%;
+}
+
+.singin-div form .form-group h2 {
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.singin-div form .form-group label {
+  float: left;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.singin-div form button.btn.btn-success {
+  float: right;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.singin-div form button.btn.btn-primary {
+  margin-top: 15px;
+  float: right;
+  margin-left: 15px;
+}
+
+.singin-div form label.reg-label {
+  float: right;
+  margin-top: 15px;
+}

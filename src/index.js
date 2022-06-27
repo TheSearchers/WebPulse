@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-json-pretty/themes/monikai.css';
+import "react-responsive-modal/styles.css";
 import React from 'react';
 
 import ReactDOM from 'react-dom/client';
