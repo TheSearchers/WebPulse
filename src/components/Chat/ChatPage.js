@@ -24,6 +24,7 @@ const Home = (props) => {
        <h5>Online</h5>
        <br/>
         <div className="chatOnline">
+     
         <Sidebar
           connectedUsers={props.connectedUsers}
           selectUser={getSelectedUser}

@@ -1,7 +1,7 @@
 import  { useState } from "react";
 import * as React from 'react';
 import socket from "../../socket";
-import { format } from "timeago.js";
+//import { format, render, cancel, register } from 'timeago.js';
 import userpic from './user.jpg'
 import TextField from "@material-ui/core/TextField"
 //-------------------------------
@@ -71,7 +71,7 @@ const Chatwindow = (props) => {
         </div>
         
         </div>
-        <div className="messageBottom1">{format(message.createdAt)}</div>
+        {/* <div className="messageBottom1">{format(message.createdAt)}</div> */}
           <br/>
         </>
       );
@@ -96,7 +96,7 @@ const Chatwindow = (props) => {
           </div>
         
         </div>
-        <div className="messageBottom">{format(message.createdAt)}</div>
+        {/* <div className="messageBottom">{format(message.createdAt)}</div> */}
         <br/>
         </>
       );

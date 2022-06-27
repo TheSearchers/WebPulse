@@ -8,8 +8,13 @@ import Signup from "./components/form/signup";
 import LoginProvider from "./components/Auth/auth";
 import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
-import ChatSection from "./components/ChatSection/ChatSection";
+import message from "./components/assets/message.gif"
+//import ChatSection from "./components/ChatSection/ChatSection";
 
+//--------------------------
+//chat
+import ChatPage from "./components/Chat/ChatPage";
+import LoginTest from "./components/Chat/Login";
 import {
   WorkSpaceForm,
 
@@ -20,10 +25,8 @@ import {
   Footer,
   
 } from "./all";
-//--------------------------
-//chat
-import ChatPage from "./components/Chat/ChatPage";
-import Login from "./components/Chat/Login";
+
+
 
 import socket from "./socket";
 //---------------------------
@@ -32,6 +35,7 @@ toast.configure();
 const App = () => {
   //-----------------------------
   //chat 
+  const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [usersList, addUsers] = useState([]);
   //const [messages, setMessages] = useState([]);
@@ -156,7 +160,7 @@ const App = () => {
           <Signin />
           <Signup />
           {/* </When> */}
-          <ChatSection />
+         
         </LoginProvider>
 
         <div className="row justify-content-center g-5"
@@ -176,19 +180,7 @@ const App = () => {
 
             <WorkSpaceForm />
   
-  {/* chat  */}
-  <div  stclassName="App" style={
-    {
-     width:'30'
-    }
-  }>
-      {!userName ? (
-        <Login submit={(event) => getUsername(event)} />
-      ) : (
-        <ChatPage user={userName} connectedUsers={usersList} />
-      )}
-    </div>
-    {/* chat */}
+  
           </div>
           <div className="col">
             <div className="d-flex flex-column justify-content-between align-items-center">
@@ -217,7 +209,25 @@ const App = () => {
         </div>
 
       </div>
+{/* chat  */}
+{show?
+  <div  stclassName="App" style={
+    {
+     width:'30'
+    }
+  }>
+      {!userName ? (
+        <LoginTest submit={(event) => getUsername(event)} />
+      ) : (
+        <ChatPage user={userName} connectedUsers={usersList} />
+      )}
+    </div>:null
 
+      }
+    {/* chat */}
+    <img src={message}
+alt="" width="100px" height="100px" 
+ onClick={()=>setShow(!show)}></img>
       <Footer />
     </React.Fragment>
   );
