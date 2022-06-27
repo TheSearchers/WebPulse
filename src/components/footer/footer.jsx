@@ -9,9 +9,20 @@ import {
 
 export default function App() {
   return (
-    <MDBFooter className='bg-dark text-center text-white'>
-      <MDBContainer className='p-4 pb-0'>
-        <section className='mb-4'>
+    <MDBFooter 
+    className='bg-dark text-center text-white'>
+      <span>
+      <MDBContainer  style={{
+      height:"50px"
+    }}className='p-4 pb-0'
+      >
+        
+        <section   style={{
+      width:"300px",
+     
+     
+      marginRight:"25px"
+    }} className='mb-4'>
           <a className='btn btn-outline-light btn-floating m-1' href='dr.mohammed.j.awadallah@gmail.com' role='button'>
             <MDBIcon fab icon='google' />
           </a>
@@ -26,15 +37,19 @@ export default function App() {
           <a className='btn btn-outline-light btn-floating m-1' href='https://github.com/TheSearchers' role='button'>
             <MDBIcon fab icon='github' />
           </a>
+         
         </section>
+       
+        
       </MDBContainer>
-
-      <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+      </span>
+      <span>
         © 2022 Copyright:
         <a className='text-white' href='https://www.instagram.com/asac.ltuc/?hl=en'>
-          ASAC: The Searchers
+          ASAC : The Searchers
         </a>
-      </div>
+        </span>
+     
     </MDBFooter>
   );
 }
