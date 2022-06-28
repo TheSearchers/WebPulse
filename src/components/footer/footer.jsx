@@ -1,40 +1,42 @@
-import React from 'react';
-import {
-  MDBFooter,
-  MDBContainer,
- 
+import React from "react";
+import { FiFacebook, FiTwitter, FiInstagram } from "react-icons/fi";
+import  FooterOverlay  from './FooterOverlay'
+import "./Footer.css";
 
-  MDBIcon
-} from 'mdb-react-ui-kit';
+const Footer = () => (
+  <div className="app__footer section__padding" id="login">
+    <FooterOverlay />
 
-export default function App() {
-  return (
-    <MDBFooter className='bg-dark text-center text-white'>
-      <MDBContainer className='p-4 pb-0'>
-        <section className='mb-4'>
-          <a className='btn btn-outline-light btn-floating m-1' href='dr.mohammed.j.awadallah@gmail.com' role='button'>
-            <MDBIcon fab icon='google' />
-          </a>
-          <a className='btn btn-outline-light btn-floating m-1' href='https://www.instagram.com/hxh_jazz/' role='button'>
-            <MDBIcon fab icon='instagram' />
-          </a>
+    <div className="app__footer-links">
+      <div className="app__footer-links_contact">
+        <h1 className="app__footer-headtext">Contact Us</h1>
 
-          <a className='btn btn-outline-light btn-floating m-1' href='#!' role='button'>
-            <MDBIcon fab icon='linkedin-in' />
-          </a>
-
-          <a className='btn btn-outline-light btn-floating m-1' href='https://github.com/TheSearchers' role='button'>
-            <MDBIcon fab icon='github' />
-          </a>
-        </section>
-      </MDBContainer>
-
-      <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-        © 2022 Copyright:
-        <a className='text-white' href='https://www.instagram.com/asac.ltuc/?hl=en'>
-          ASAC: The Searchers
-        </a>
+        <p className="p__opensans">E-mail: marahjaradat97@gmail.com</p>
+        <a> contact with support</a>
       </div>
-    </MDBFooter>
-  );
-}
+
+      <div className="app__footer-links_logo">
+        <p className="p__opensans">
+          &quot;if there is no dark, we will never learn how the light is. the
+          inverse shows us the right&quot;
+        </p>
+
+        <div className="app__footer-links_icons">
+          <FiFacebook />
+          <FiTwitter />
+          <FiInstagram />
+        </div>
+      </div>
+
+      <div className="app__footer-links_work">
+        <h1 className="app__footer-headtext">24 hr support </h1>
+      </div>
+    </div>
+
+    <div className="footer__copyright">
+      <p className="p__opensans">2022 The Searchers All Rights reserved.</p>
+    </div>
+  </div>
+);
+
+export default Footer;

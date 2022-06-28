@@ -1,7 +1,31 @@
+.span1{
+  width: 400px;
+  display: inline-flex;
+
+}
+
+.span2{
+  margin-left: 50px;
+  width: 800px;
+  display: inline-flex;
+  box-shadow: 0px 3px 24px -8px rgba(128, 126, 126, 0.75);
+}
+
+.span3{
+ 
+  width: 100 px;
+  display: inline-flex;
+  
+}
+.req_His_btn{
+  width: 50px;
+}
+
 .messenger {
   height: calc(100vh - 70px);
   display: flex;
-  
+box-shadow: 0px 3px 24px -8px rgba(128, 126, 126, 0.75);
+
 }
 
 .chatMenu {
@@ -11,7 +35,7 @@
 
 .chatMenuInput {
   width: 90%;
-  padding: 10px 0;
+  padding: 0p1x 0;
   border: none;
   border-bottom: 1px solid gray;
 }
@@ -21,11 +45,10 @@
 }
 
 .chatBoxWrapper {
- 
+  
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+
 }
 
 .chatBoxTop {
@@ -39,7 +62,7 @@
   
   display: flex;
   align-items: center;
-  justify-content: space-between;
+ 
 }
 
 .chatMessageInput {
@@ -55,16 +78,17 @@ width: 80px;
   border: none;
   margin-left: 3px;
   cursor: pointer;
-  background-image: linear-gradient(to right, rgb(126, 125, 125) , teal);
-  /* background-color: teal; */
+   background-image: linear-gradient(to right,rgb(3, 3, 3) ,rgb(55, 55, 55) ); 
+    
   color: white;
 }
 .currentUser{
-  padding: 1px;
+  
   border-radius: 1px;
   color: white;
-  max-width: 360px;
-  background-image: linear-gradient(to right, rgb(126, 125, 125) , teal);
+  max-width: 400px;
+  width: 500px;
+  background-image: linear-gradient(to right,rgb(3, 3, 3) ,rgb(55, 55, 55) ); 
 
 }
 .chatOnline {
@@ -72,7 +96,7 @@ width: 80px;
 
 }
 .chatBoxWrapper{
-  padding: 10px;
+  /* padding: 10px; */
   height: 100%;
   width:300px;
 }
@@ -129,7 +153,7 @@ h5{
    color: #05830f;
  
  }
-@media screen and (max-width: 60px) {
+@media screen and (max-width: 60pxv) {
   .chatMenu {
     flex: 1;
   }
@@ -322,9 +346,15 @@ input:focus {
   
   background-color: red;
 }
+.ssss{
+  height: 790px;
+  
+  
+}
 .messenger{
   
-  height: calc(100vh - 70px);
+  height: calc(100vh - 130px);
+  
   display: flex;
 }
 h1 {

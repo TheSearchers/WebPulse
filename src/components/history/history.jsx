@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { MDBCollapse, MDBBtn } from "mdb-react-ui-kit";
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import "./history.css";
 
 const History = ({
@@ -25,6 +26,7 @@ const History = ({
 
     clearResponseTable(); // clear the data of response table
   };
+
   const [show, setShow] = useState(false);
 
   //   const handleShow=()=>setShow(!show)
@@ -46,24 +48,37 @@ const History = ({
           ) : !history.length ? (
             <div className="text-center">No Requests have been made</div>
           ) : (
-            history.map((requestItem) => (
-              <li
-                key={requestItem.id}
-                id={requestItem.id}
-                className="list-group-item d-flex btn justify-content-between align-items-center pe-2 border-1 border-warning border-top-0"
-                onClick={clickHistoryItemHandler}
-              >
-                {requestItem.url}
-                <span className="badge bg-primary rounded-pill">
-                  {requestItem.method}
-                </span>
-              </li>
-            ))
+            <MDBTable className='table-info' style={{marginLeft : '50px'}}>
+              <MDBTableHead>
+                <tr>
+                  <th scope='col'>Method</th>
+                  <th scope='col'>URL</th>
+                </tr>
+
+              </MDBTableHead>
+              <MDBTableBody>
+             { history.map((requestItem) => (
+                <tr>
+                  
+                  <th scope='row'
+                    key={requestItem.id}
+                    id={requestItem.id}
+                    onClick={clickHistoryItemHandler}
+                  >{requestItem.method}</th>
+                 
+                  <td> {requestItem.url}</td>
+                </tr>
+             
+              ))}
+              </MDBTableBody>
+              </MDBTable>
           )}
-        </MDBCollapse>
+            </MDBCollapse>
       </ul>
     </React.Fragment>
   );
 };
 
+
 export default History;
+

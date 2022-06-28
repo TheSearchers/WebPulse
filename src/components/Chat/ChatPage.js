@@ -2,6 +2,7 @@ import './style.css'
 import React, { useState } from "react";
 import Chatwindow from "./Chatwindow";
 import Sidebar from "./Sidebar";
+let k=" "
 const Home = (props) => {
   const [selectedUser, setSelectedUser] = useState({});
   const [userSelected, setUserSelected] = useState(false);
@@ -13,10 +14,10 @@ const Home = (props) => {
   };
 
   return (
-    <>
+    <div>
     <div className="currentUser"> {props.user}</div>
     <div className="messenger">
-    
+    <div >_</div>
       <div className="chatMenuWrapper">
         {/* <div > <h3>{props.user}</h3>
         <h6>Online</h6></div>
@@ -43,7 +44,7 @@ const Home = (props) => {
         <div className="noConversationText">Start messaging</div>
       )}
     </div>
-    </>
+    </div>
   );
 };
 
