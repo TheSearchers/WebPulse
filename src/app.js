@@ -187,7 +187,7 @@ const App = () => {
             {/* chat */}
           </span>
         
-<span className="span2" >
+            <span className="span2" >
   
             <div style={{
               marginLeft:"100px"
