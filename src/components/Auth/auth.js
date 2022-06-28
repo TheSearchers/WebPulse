@@ -66,6 +66,7 @@ export default function LoginProvider(props) {
       const validUser = jwt(data);
       setCurrUser(validUser.username);
       console.log("lllll", validUser);
+      console.log("valis u ", currUser);
       if (validUser) {
         setLoginstate(true, data);
         cookie.save("jwt", data);
