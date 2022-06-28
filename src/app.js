@@ -8,7 +8,8 @@ import Signup from "./components/form/signup";
 import LoginProvider from "./components/Auth/auth";
 import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
-import message from "./components/assets/message.gif";
+import message from "./components/assets/message.webp"
+
 //import ChatSection from "./components/ChatSection/ChatSection";
 
 //--------------------------
@@ -25,6 +26,7 @@ import {
 } from "./all";
 
 import socket from "./socket";
+import { display } from "@mui/system";
 //---------------------------
 toast.configure();
 
@@ -38,7 +40,6 @@ const App = () => {
 
   const getUsername = (fetched_userName) => {
     setUserName(fetched_userName);
-    //socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected.
     socket.auth = { fetched_userName };
     socket.connect();
   };
@@ -148,14 +149,15 @@ const App = () => {
   };
   return (
     <React.Fragment>
-      <div className="container-lx">
+      <div style={{backgroundColor:"ghostwhite"}} className="container-lx" >
         {/* <Header /> */}
         <LoginProvider>
-          <Header />
+          <Header submit={(event) => getUsername(event)} />
           {/* <When condition={!auth.loggedIn}> */}
           <Signin />
           <Signup />
           {/* </When> */}
+
         </LoginProvider>
 
         <div
@@ -180,6 +182,7 @@ const App = () => {
           </div>
           <div className="col">
             <div className="d-flex flex-column justify-content-between align-items-center">
+            
               <UrlInput
                 url={url}
                 setUrl={setUrl}
@@ -201,33 +204,37 @@ const App = () => {
                 responseStatus={responseStatus}
               />
             </div>
+          
+          </span>
+          <span className="span3"
+          >
+          <div className="req_His_btn">
+            <History
+              history={history}
+              setMethod={setMethod}
+              setHeaders={setHeaders}
+              setUrl={setUrl}
+              setBody={setBody}
+              clearResponseTable={clearResponseTable}
+            />
+            <WorkSpaceForm />
           </div>
+        </span>
         </div>
+        <img src={message}
+        style={{
+          marginLeft:"40px",
+          marginBottom:"30px"
+        }}
+          alt="" width="100px" height="100px"
+          onClick={() => setShow(!show)}></img>
+
+       
       </div>
-      {/* chat  */}
-      {show ? (
-        <div
-          stclassName="App"
-          style={{
-            width: "30",
-          }}
-        >
-          {!userName ? (
-            <LoginTest submit={(event) => getUsername(event)} />
-          ) : (
-            <ChatPage user={userName} connectedUsers={usersList} />
-          )}
-        </div>
-      ) : null}
-      {/* chat */}
-      <img
-        src={message}
-        alt=""
-        width="100px"
-        height="100px"
-        onClick={() => setShow(!show)}
-      ></img>
-      <Footer />
+      </div>
+    
+       <Footer />
+      
     </React.Fragment>
   );
 };

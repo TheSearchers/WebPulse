@@ -122,7 +122,7 @@ const Chatwindow = (props) => {
 
  
   return (
-    <div className= "chatBoxWrapper">
+    <span className= "chatBoxWrapper">
       <div className="chatBoxTop">{showMessages}</div>
       <div className="chatBoxBottom"> 
          <form className="chatBoxBottom"
@@ -146,7 +146,7 @@ const Chatwindow = (props) => {
       </form>
       </div>
     
-    </div>
+    </span>
   );
 };
 

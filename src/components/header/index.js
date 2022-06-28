@@ -10,8 +10,10 @@ import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { LoginContext } from "../Auth/auth";
 
-export default function ButtonAppBar() {
-  const auth = useContext(LoginContext);
+
+export default function ButtonAppBar(props) {
+  const auth=useContext(LoginContext)
+  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -21,16 +23,22 @@ export default function ButtonAppBar() {
             Webpuls
           </Typography>
           <When condition={!auth.loggedIn}>
-            <LoginIcon />
-            <Button color="inherit" onClick={auth.onOpenModal}>
-              Login
-            </Button>
+
+
+          <LoginIcon/>
+          <Button color="inherit" onClick={auth.displayForm}>Login</Button>
+
           </When>
+
           <When condition={auth.loggedIn}>
-            <LogoutIcon />
-            <Button color="inherit" onClick={auth.logout}>
-              Logout
-            </Button>
+
+            {
+              auth.currUser != "unnamed" ?
+              props.submit(auth.currUser) : null 
+            }
+          <LogoutIcon/>
+          <Button color="inherit" onClick={auth.logout}>Logout</Button>
+
           </When>
         </Toolbar>
       </AppBar>
