@@ -8,6 +8,10 @@ import Signup from "./components/form/signup";
 import LoginProvider from "./components/Auth/auth";
 import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
+import Workspace from "./components/Workspaces/WorkSpace"
+import axios from 'axios';
+import cookie from 'react-cookies';
+//import ChatSection from "./components/ChatSection/ChatSection";
 import message from "./components/assets/message.webp"
 
 import {
@@ -74,6 +78,8 @@ const App = () => {
 
   //----------------------
   const auth = useContext(LoginContext);
+  const [history_id,setHistory_id]=useState();
+  const [workSpace_id,setWorkSpaceId]=useState()
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("");
   const [method, setMethod] = useState("");
@@ -158,19 +164,42 @@ const App = () => {
       console.log(error); //
     }
   };
+  async function svaeRequest(e){
+    e.preventDefault();
+    // console.log(auth.API);
+        const res=await axios({
+            method: 'post',
+            url:`http://localhost:3009/workspace/${workSpace_id}/create-req`, 
+            headers: {
+      
+              "Authorization": `Bearer ${cookie.load("userData").token}`,
+            },
+            data:{
+              url_name:url,
+              method_name:method,
+            }
+            
+          })
+        
+    
+}
   return (
+    
+      <div className="container-lx">
+        {/* <Header /> */}
+        <LoginProvider>
+          <Header />
+          {/* <When condition={!auth.loggedIn}> */}
+          <Signin />
+          <Signup />
+          {/* </When> */}
+         <Workspace setWorkSpaceId={setWorkSpaceId} 
+         workSpace_id={workSpace_id} 
+         setHistory_id={setHistory_id} 
+         history_id={history_id}/>
+        </LoginProvider>
      <div>
     <div style={{ backgroundColor: "ghostwhite" }} className="container-lx" >
-
-      {/* <Header /> */}
-      <LoginProvider>
-        <Header submit={(event) => getUsername(event)} />
-        {/* <When condition={!auth.loggedIn}> */}
-        <Signin />
-        <Signup />
-        {/* </When> */}
-
-      </LoginProvider>
       <div className="ssss">
         <div className = 'about'>
           <span style={{ backgroundColor: "white" }} className="span1">
@@ -213,6 +242,8 @@ const App = () => {
                   headers={headers}
                   setHeaders={setHeaders}
                   sendHandler={sendHandler}
+                  workSpace_id={workSpace_id}
+                  svaeRequest={svaeRequest}
                 />,
                 <ResponseTable
                   responseData={responseData}
@@ -256,10 +287,7 @@ const App = () => {
       </div>
       <Footer />
     </div>
-    
-    
- 
-  
+    </div>
   </div>
   );
 };

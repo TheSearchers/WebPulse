@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const URL = "http://localhost:3001";
+const URL = "http://localhost:3009";
 
 const socket = io(URL, { autoConnect: false });
 //Adds a listener that will be fired when any event is emitted.

@@ -11,6 +11,7 @@ const History = ({
   setUrl,
   setBody,
   clearResponseTable,
+  
 }) => {
   const clickHistoryItemHandler = (e) => {
     const itemId = e.currentTarget.id;

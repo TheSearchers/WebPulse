@@ -5,7 +5,7 @@ import { MDBBtn, MDBBtnGroup } from 'mdb-react-ui-kit';
 
 // import { MDBInput } from "mdbreact";
 
-const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
+const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders,workSpace_id,svaeRequest }) => {
 
 
   // const [loading , setLoading] = useState(false)
@@ -58,6 +58,7 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
             role="tab"
             aria-controls="pills-headers"
             aria-selected="false"
+            onClick={(e)=>svaeRequest(e)}
           >Save To Workspace</MDBBtn>
 
 

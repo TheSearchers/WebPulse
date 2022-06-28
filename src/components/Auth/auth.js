@@ -7,7 +7,7 @@ import base64 from 'base-64';
 import swal from 'sweetalert';
 
 
-const API = `http://localhost:3001`;
+const API = `http://localhost:3009`;
 export const LoginContext = React.createContext();
 
 export default function LoginProvider(props) {
@@ -47,13 +47,14 @@ export default function LoginProvider(props) {
         
     }
     const validateMyUser = (data) => {
+        console.log(data);
         if (data) {
-            const validUser = jwt(data);
+            const validUser = jwt(data.token);
             setCurrUser(validUser.username);
             console.log("lllll",validUser);
             if (validUser) {
                 setLoginstate(true, data);
-                cookie.save('jwt', data);
+                cookie.save('userData', data);
             } else {
                 setLoginstate(false, {})
             }
@@ -71,12 +72,13 @@ export default function LoginProvider(props) {
     const logout = () => {
         setLoggedIn(false);
         setUser({});
-        cookie.remove('jwt');
+        cookie.remove("userData");
         displayForm();
     }
 
     useEffect(() => {
-        const myUserInfo = cookie.load('jwt');
+        const myUserInfo = cookie.load('userData');
+        // console.log("sadasada",cookie.load('userData').token);
         validateMyUser(myUserInfo);
     }, [])
 
@@ -100,7 +102,8 @@ export default function LoginProvider(props) {
         setRegistred:setRegistred,
         renderedForm:renderedForm,
         displayForm:displayForm,
-        signup:signup
+        signup:signup,
+        API:API,
     }
 
 
