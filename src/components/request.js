@@ -11,7 +11,7 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
   // const [loading , setLoading] = useState(false)
   // useEffect(() =>{
   //   setLoading(true);
-    
+
   //   setTimeout(()=>{
   //     setLoading(false)
   //   },2000)
@@ -19,11 +19,11 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
   // },[])
 
 
-  
+
   return (
     <React.Fragment>
-      <div className="mb-3">
-     
+      <div className="mb-3" >
+
 
         <MDBBtnGroup shadow='0'
           className="nav nav-pills mb-3 justify-content-center"
@@ -31,7 +31,6 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
           role="tablist"
         >
           <MDBBtn color='dark'
-            
             data-bs-toggle="pill"
             data-bs-target="#pills-body"
             type="button"
@@ -42,7 +41,6 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
 
 
           <MDBBtn color='dark'
-            
             data-bs-toggle="pill"
             data-bs-target="#pills-headers"
             type="button"
@@ -52,7 +50,7 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
           >Headers</MDBBtn>
 
 
-           <MDBBtn color='danger'
+          <MDBBtn color='danger'
             data-bs-toggle="pill"
             type="button"
             role="tab"
@@ -63,8 +61,8 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
 
 
           <MDBBtn color='success'
-             onClick={sendHandler}
-             
+            onClick={sendHandler}
+
           >Send</MDBBtn>
         </MDBBtnGroup>
         <div className="tab-content" id="pills-tabContent">
@@ -84,8 +82,9 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
               style={{
                 width: "605px",
                 height: "246px",
+                backgroundColor: '#555555'
               }}
-              
+
               onChange={e => setBody(e.target.value)}
             ></textarea>
           </div>
@@ -105,6 +104,7 @@ const RequestTable = ({ sendHandler, body, setBody, headers, setHeaders }) => {
               style={{
                 width: "605px",
                 height: "246px",
+                backgroundColor: '#555555'
               }}
               onChange={e => setHeaders(e.target.value)}
             >
@@ -132,3 +132,32 @@ export default RequestTable;
 
 
 
+
+{/* <TabContext>
+  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <TabList aria-label="lab API tabs example"
+        className="nav nav-pills mb-3 justify-content-center"
+        id="pills-tab"
+        role="tablist"
+    >
+      <Tab label="Body" value="body"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-body"
+        type="button"
+        role="tab"
+        aria-controls="pills-body"
+        aria-selected="true"
+      />
+      <Tab label="Headers" value="headers"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-headers"
+        type="button"
+        role="tab"
+        aria-controls="pills-headers"
+        aria-selected="false"
+      />
+    </TabList>
+  </Box>
+  <TabPanel value="body">Body</TabPanel>
+  <TabPanel value="headers">Headers</TabPanel>
+</TabContext>  */}

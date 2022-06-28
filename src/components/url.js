@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 
+
 const UrlInput = ({ url,setUrl, method, setMethod }) => {
   const [choice, setChoice] = useState({method});
   const handleChoice = (event) => {
@@ -16,7 +17,7 @@ const UrlInput = ({ url,setUrl, method, setMethod }) => {
   
 
   return (
-    <React.Fragment>
+    <React.Fragment id = 'scroll'>
       <div className="d-flex flex-row input-group mb-4  justify-content-center">
 
         <MDBInput label='Enter URL' id='typeText' type='text'
