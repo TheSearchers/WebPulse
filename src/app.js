@@ -7,42 +7,39 @@ import Signin from "./components/form/signin";
 import Signup from "./components/form/signup";
 import LoginProvider from "./components/Auth/auth";
 import { LoginContext } from "./components/Auth/auth";
-import message from "./components/assets/message.gif"
-import socket from "./socket";
+import { useContext } from "react";
+import message from "./components/assets/message.gif";
+import Landing from "./components/landing/landing";
+//import ChatSection from "./components/ChatSection/ChatSection";
+
+//--------------------------
+//chat
 import ChatPage from "./components/Chat/ChatPage";
 import LoginTest from "./components/Chat/Login";
 import {
-  Sidebar,
   WorkSpaceForm,
   History,
   ResponseTable,
   RequestTable,
   UrlInput,
   Footer,
-  
 } from "./all";
 
+import socket from "./socket";
+//---------------------------
 toast.configure();
 
 const App = () => {
-  let audio1 = new Audio('./src/assets/i-did-it-message-tone.mp3')
-  let audio2 = new Audio('./src/assets/error.mp3')
-  const [url, setUrl] = useState("");
-  const [method, setMethod] = useState("");
-  const [body, setBody] = useState("");
-  const [headers, setHeaders] = useState("");
-  const [history, setHistory] = useState([]);
-  const [responseData, setResponseData] = useState("");
-  const [responseHeaders, setResponseHeaders] = useState({});
-  const [responseCookie, setResponseCookie] = useState("");
-  const [responseStatus, setResponseStatus] = useState("null");
   //-----------------------------
-  //chat 
+  //chat
   const [show, setShow] = useState(false);
   const [userName, setUserName] = useState("");
   const [usersList, addUsers] = useState([]);
+  //const [messages, setMessages] = useState([]);
+
   const getUsername = (fetched_userName) => {
     setUserName(fetched_userName);
+    //socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected.
     socket.auth = { fetched_userName };
     socket.connect();
   };
@@ -65,6 +62,21 @@ const App = () => {
   });
 
   //----------------------
+  const auth = useContext(LoginContext);
+  const [loading, setLoading] = useState(true);
+  const [url, setUrl] = useState("");
+  const [method, setMethod] = useState("");
+  const [body, setBody] = useState("");
+  const [headers, setHeaders] = useState("");
+  const [history, setHistory] = useState([]);
+  const [responseData, setResponseData] = useState("");
+  const [responseHeaders, setResponseHeaders] = useState({});
+  const [responseCookie, setResponseCookie] = useState("");
+  const [responseStatus, setResponseStatus] = useState("null");
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+  }, []);
 
   useEffect(() => {
     setMethod("GET");
@@ -113,7 +125,6 @@ const App = () => {
       if (data) setResponseData(JSON.stringify(data));
       if (document.cookie) setResponseCookie(document.cookie);
       setResponseStatus(res.status);
-      audio1.play();
       toast.success("Successful", {
         position: "top-right",
         autoClose: 2000,
@@ -122,11 +133,8 @@ const App = () => {
         pauseOnHover: false,
         draggable: true,
         progress: undefined,
-      }
-      );
-      
+      });
     } catch (error) {
-      audio2.play()
       toast.error("Error!", {
         position: "top-right",
         autoClose: 2000,
@@ -136,12 +144,12 @@ const App = () => {
         draggable: true,
         progress: undefined,
       });
-      
       console.log(error); //
     }
   };
   return (
     <React.Fragment>
+      <Landing />
       <div className="container-lx">
         {/* <Header /> */}
         <LoginProvider>
@@ -150,16 +158,16 @@ const App = () => {
           <Signin />
           <Signup />
           {/* </When> */}
-         
         </LoginProvider>
 
-        <div className="row justify-content-center g-5"
-        style={{
-          display : 'flex',
-          justifyContent: 'center',
-        
-          
-        }}>
+        <div
+          className="row justify-content-center g-5"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "0px",
+          }}
+        >
           <div className="col-4">
             <History
               history={history}
@@ -169,11 +177,8 @@ const App = () => {
               setBody={setBody}
               clearResponseTable={clearResponseTable}
             />
-            {/* <Sidebar/> */}
 
             <WorkSpaceForm />
-  
-  
           </div>
           <div className="col">
             <div className="d-flex flex-column justify-content-between align-items-center">
@@ -200,27 +205,30 @@ const App = () => {
             </div>
           </div>
         </div>
-
       </div>
-{/* chat  */}
-{show?
-  <div  stclassName="App" style={
-    {
-     width:'30'
-    }
-  }>
-      {!userName ? (
-        <LoginTest submit={(event) => getUsername(event)} />
-      ) : (
-        <ChatPage user={userName} connectedUsers={usersList} />
-      )}
-    </div>:null
-
-      }
-    {/* chat */}
-    <img src={message}
-alt="" width="100px" height="100px" 
- onClick={()=>setShow(!show)}></img>
+      {/* chat  */}
+      {show ? (
+        <div
+          stclassName="App"
+          style={{
+            width: "30",
+          }}
+        >
+          {!userName ? (
+            <LoginTest submit={(event) => getUsername(event)} />
+          ) : (
+            <ChatPage user={userName} connectedUsers={usersList} />
+          )}
+        </div>
+      ) : null}
+      {/* chat */}
+      <img
+        src={message}
+        alt=""
+        width="100px"
+        height="100px"
+        onClick={() => setShow(!show)}
+      ></img>
       <Footer />
     </React.Fragment>
   );

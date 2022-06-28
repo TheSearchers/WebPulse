@@ -1,0 +1,80 @@
+.form-group.h2 {
+}
+
+button.react-responsive-modal-closeButton {
+  height: 29px !important;
+}
+
+.react-responsive-modal-modal {
+  opacity: 0.9 !important;
+  width: 200;
+}
+
+.singin-div {
+  text-align: center;
+  width: 600px;
+  opacity: 0.9;
+  background-color: white;
+  opacity: 0.9;
+}
+
+.singin-div form {
+  width: 100%;
+  margin: 0;
+  display: inline-block;
+  box-shadow: none;
+  border-radius: unset;
+  padding: 0;
+  max-width: 100%;
+}
+
+.singin-div form .form-group h2 {
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+  font-family: "Cormorant Upright";
+}
+
+.singin-div form .form-group label {
+  float: left;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.singin-div form button.btn.btn-success {
+  float: right;
+  margin-top: 10px;
+  background-color: black;
+  margin-right: 65px;
+}
+
+.singin-div form button.btn.btn-primary {
+  margin-top: 15px;
+  float: right;
+  margin-left: 15px;
+  background-color: black;
+  border-color: black;
+}
+
+.singin-div form label.reg-label {
+  display: inline;
+  margin-right: 39px;
+}
+
+.form-control {
+  min-height: auto;
+  padding-top: 4px;
+  padding-bottom: 3.28px;
+  transition: all 0.1s linear;
+  width: 75%;
+  padding: 11px;
+  margin: 8px;
+  margin-left: 83px;
+}
+.span {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
