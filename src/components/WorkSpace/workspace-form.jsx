@@ -77,7 +77,7 @@ export default function WorkSpaceForm() {
       {!data ? (
         <div></div>
       ) : (
-        <div class="data">
+        <div className="data">
           <br></br>
 
           <h3>

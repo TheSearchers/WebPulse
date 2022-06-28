@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { MDBCollapse, MDBBtn } from "mdb-react-ui-kit";
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import "./history.css";
 
 const History = ({
@@ -47,37 +47,38 @@ const History = ({
           ) : !history.length ? (
             <div className="text-center">No Requests have been made</div>
           ) : (
-            <MDBTable className='table-info' style={{marginLeft : '50px'}}>
+            <MDBTable
+              className="table-info"
+              style={{ marginLeft: "50px", float: "left" }}
+            >
               <MDBTableHead>
                 <tr>
-                  <th scope='col'>Method</th>
-                  <th scope='col'>URL</th>
+                  <th scope="col">Method</th>
+                  <th scope="col">URL</th>
                 </tr>
-
               </MDBTableHead>
               <MDBTableBody>
-             { history.map((requestItem) => (
-                <tr>
-                  
-                  <th scope='row'
-                    key={requestItem.id}
-                    id={requestItem.id}
-                    onClick={clickHistoryItemHandler}
-                  >{requestItem.method}</th>
-                 
-                  <td> {requestItem.url}</td>
-                </tr>
-             
-              ))}
+                {history.map((requestItem) => (
+                  <tr>
+                    <th
+                      scope="row"
+                      key={requestItem.id}
+                      id={requestItem.id}
+                      onClick={clickHistoryItemHandler}
+                    >
+                      {requestItem.method}
+                    </th>
+
+                    <td> {requestItem.url}</td>
+                  </tr>
+                ))}
               </MDBTableBody>
-              </MDBTable>
+            </MDBTable>
           )}
-            </MDBCollapse>
+        </MDBCollapse>
       </ul>
     </React.Fragment>
   );
 };
 
-
 export default History;
-
