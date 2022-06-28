@@ -19,8 +19,6 @@ export default function App() {
         
         <section   style={{
       width:"300px",
-     
-     
       marginRight:"25px"
     }} className='mb-4'>
           <a className='btn btn-outline-light btn-floating m-1' href='dr.mohammed.j.awadallah@gmail.com' role='button'>
