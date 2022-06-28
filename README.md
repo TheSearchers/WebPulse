@@ -10,7 +10,7 @@ _It provides you with stylish UI and not complicated as well as a dedicated cust
 ## How to use it ? 
 * `git clone https://github.com/TheSearchers/webpulse.git`
 * run 	`npm install` 
-* `npm run start`
+* `npm run start `
 * **and enjoy**
 
 ## WireFrame
