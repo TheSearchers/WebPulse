@@ -1,9 +1,12 @@
 import  { useState } from "react";
 import * as React from 'react';
+import {Howl, Howler} from 'howler';
+
 import socket from "../../socket";
 //import { format, render, cancel, register } from 'timeago.js';
 import userpic from './user.jpg'
 import TextField from "@material-ui/core/TextField"
+import oudio from "../assets/2421_mobile-rington..mp3"
 //-------------------------------
 
 import Button from '@mui/material/Button';
@@ -16,6 +19,19 @@ const Chatwindow = (props) => {
     ...props.selectedUser,
     messages: [],
   };
+//---------------------
+//chat sound
+const soundPlay=(src)=>{
+  const sound = new Howl({
+    src
+  });
+  
+  // Play the sound.
+  sound.play();
+  
+  // Change global volume.
+  Howler.volume(0.5);
+}
 
   const [messages, setMessages] = useState([]);
  
@@ -126,8 +142,16 @@ const Chatwindow = (props) => {
       <div className="chatBoxTop">{showMessages}</div>
       <div className="chatBoxBottom"> 
          <form className="chatBoxBottom"
-         onSubmit={(e) => onMessage(e, messageContent)}>
+         onSubmit={(e) => {
+          onMessage(e, messageContent);
+          soundPlay(oudio);
+         
+         }}>
          <TextField
+         style={{
+          marginRight:"3px",
+          marginTop:"2px"
+         }}
               name="message"
               onChange={(e) => getContent(e)}
               
@@ -140,7 +164,7 @@ const Chatwindow = (props) => {
       
       <Button type="submit" 
       className="chatSubmitButton"variant="contained" endIcon={<SendIcon />}>
-        Send
+        
       </Button>
     </Stack>
       </form>

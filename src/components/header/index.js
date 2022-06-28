@@ -23,16 +23,25 @@ export default function ButtonAppBar(props) {
           <When condition={!auth.loggedIn}>
 
           <LoginIcon/>
-          <Button color="inherit" onClick={auth.displayForm}>Login</Button>
+          <Button color="inherit" onClick={()=>{
+            auth.displayForm();
+            props.handleChatImg();
+          }}>Login</Button>
           </When>
 
           <When condition={auth.loggedIn}>
             {
-              auth.currUser != "unnamed" ?
+              console.log("from log "+auth.currUser)}
+             { auth.currUser != "unnamed" ?
               props.submit(auth.currUser) : null 
             }
-          <LogoutIcon/>
-          <Button color="inherit" onClick={auth.logout}>Logout</Button>
+          <LogoutIcon   />
+          <Button color="inherit" onClick={()=>
+          {
+            auth.logout() ;
+          props.handleChatImg()
+          }
+          }>Logout</Button>
           </When>
         </Toolbar>
       </AppBar>

@@ -10,12 +10,15 @@ import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
 import message from "./components/assets/message.webp"
 
+
+
+
 //import ChatSection from "./components/ChatSection/ChatSection";
 
 //--------------------------
 //chat
 import ChatPage from "./components/Chat/ChatPage";
-import LoginTest from "./components/Chat/Login";
+
 import {
   WorkSpaceForm,
 
@@ -37,16 +40,25 @@ toast.configure();
 const App = () => {
   //-----------------------------
   //chat 
-  const [show, setShow] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [showImgChat, setShowImgChat] = useState(true);
   const [userName, setUserName] = useState("");
   const [usersList, addUsers] = useState([]);
   //const [messages, setMessages] = useState([]);
+  const handleChatImg = () => {
+    setShowImgChat(true)
+    setShowChat(false)
+  };
+ 
 
   const getUsername = (fetched_userName) => {
-    setUserName(fetched_userName);
+//console.log("+++++ "+usersList.includes(fetched_userName))
+console.log(fetched_userName)
+   setUserName(fetched_userName);
     //socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected. 
     socket.auth = { fetched_userName };
-    socket.connect();
+    
+socket.connect();
   };
 
   socket.on("users", (users) => {
@@ -59,10 +71,12 @@ const App = () => {
       if (a.username < b.username) return -1;
       return a.username > b.username ? 1 : 0;
     });
+     //console.log(users)
     addUsers(users);
   });
 
   socket.on("user connected", (user) => {
+    
     addUsers([...usersList, user]);
   });
 
@@ -157,10 +171,10 @@ const App = () => {
       <div style={{backgroundColor:"ghostwhite"}} className="container-lx" >
         {/* <Header /> */}
         <LoginProvider>
-          <Header submit={(event) => getUsername(event)} />
+          <Header handleChatImg={handleChatImg} usersList={usersList} submit={(event) => getUsername(event)} />
           {/* <When condition={!auth.loggedIn}> */}
           <Signin />
-          <Signup />
+          <Signup  />
           {/* </When> */}
 
         </LoginProvider>
@@ -168,7 +182,7 @@ const App = () => {
         <div>
           <span style={{backgroundColor:"white"}}className="span1">
             {/* chat  */}
-            {show ?
+            {showChat ?
               <div stclassName="span2" style={
                 {
                   width: '30'
@@ -176,10 +190,21 @@ const App = () => {
               }>
                 {!userName ? (
                   // <LoginTest submit={(event) => getUsername(event)} />
-                  alert("Please logIn befor you open the Chat "),
-                  setShow(false)
+                  //alert("Please logIn befor you open the Chat "),
+                  toast.error("Please logIn befor you open the Chat !", {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  })
+                ,
+                  setShowChat(false),
+                  setShowImgChat(true)
                 ) : (
-                  <ChatPage user={userName} connectedUsers={usersList} />
+                  <ChatPage handleChatImg={handleChatImg} user={userName} connectedUsers={usersList} />
                 )}
               </div> : null
 
@@ -230,18 +255,26 @@ const App = () => {
           </div>
         </span>
         </div>
+        { showImgChat ?
         <img src={message}
         style={{
           marginLeft:"40px",
           marginBottom:"30px"
         }}
           alt="" width="100px" height="100px"
-          onClick={() => setShow(!show)}></img>
-
+          onClick={() =>{ setShowChat(!showChat)
+          setShowImgChat(!showImgChat)
+          }
+          }></img>
+          :null
+          
+      }
        
       </div>
+      {/* {console.log("showChat ====>  "+showChat)}
+      {console.log("showImgChat  ===> "+showImgChat)} */}
       </div>
-    
+   
        <Footer />
       
     </React.Fragment>
