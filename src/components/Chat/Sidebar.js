@@ -26,9 +26,10 @@ const Sidebar = (props) => {
           key={user.key}
          
         >
-            
+            {console.log(user.username)}
           <div className="chatOnlineImgContainer"  >
             <img
+            style={{marginRight:"15px"}}
               className="chatOnlineImg"
               src={userpic}
               alt=""

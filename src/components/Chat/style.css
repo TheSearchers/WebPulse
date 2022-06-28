@@ -1,7 +1,31 @@
+.span1{
+  width: 400px;
+  display: inline-flex;
+
+}
+
+.span2{
+  margin-left: 50px;
+  width: 800px;
+  display: inline-flex;
+  box-shadow: 0px 3px 24px -8px rgba(128, 126, 126, 0.75);
+}
+
+.span3{
+ 
+  width: 100 px;
+  display: inline-flex;
+  
+}
+.req_His_btn{
+  width: 50px;
+}
+
 .messenger {
   height: calc(100vh - 70px);
   display: flex;
-  
+box-shadow: 0px 3px 24px -8px rgba(128, 126, 126, 0.75);
+
 }
 
 .chatMenu {
@@ -11,7 +35,7 @@
 
 .chatMenuInput {
   width: 90%;
-  padding: 10px 0;
+  padding: 0p1x 0;
   border: none;
   border-bottom: 1px solid gray;
 }
@@ -21,11 +45,10 @@
 }
 
 .chatBoxWrapper {
- 
+  
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+
 }
 
 .chatBoxTop {
@@ -39,7 +62,7 @@
   
   display: flex;
   align-items: center;
-  justify-content: space-between;
+ 
 }
 
 .chatMessageInput {
@@ -51,41 +74,60 @@
 }
 
 .chatSubmitButton {
-width: 80px;
+width: 30px;
+margin-right: 6px;
   border: none;
-  margin-left: 3px;
+  margin-top: 5px;
+  margin-left: 2px;
   cursor: pointer;
-  background-image: linear-gradient(to right, rgb(126, 125, 125) , teal);
-  /* background-color: teal; */
+   background-image: linear-gradient(to right,rgb(109, 172, 239) ,rgb(73, 113, 155) ); 
   color: white;
 }
 .currentUser{
-  padding: 1px;
+  
   border-radius: 1px;
   color: white;
-  max-width: 360px;
-  background-image: linear-gradient(to right, rgb(126, 125, 125) , teal);
+  max-width: 400px;
+  width: 500px;
+  background-image: linear-gradient(to right,rgb(3, 3, 3) ,rgb(55, 55, 55) ); 
 
 }
 .chatOnline {
   flex: 3;
+  overflow-y: auto;
 
 }
 .chatBoxWrapper{
-  padding: 10px;
+  /* padding: 10px; */
   height: 100%;
-  width:300px;
+ 
+  min-width: 300px;
 }
+::-webkit-scrollbar{
+  width: 12px;
+  
+}
+::-webkit-scrollbar-track{
+  background-color: #ffffff;
+}
+::-webkit-scrollbar-thumb{
+ background-color:rgb(146, 151, 159) ;
+ border-radius: 10%;
+}
+
 .chatMenuWrapper{
   padding: 2px;
   height: 100%;
   width: px;
+  align-items: flex-end;
   border-top-style: none;
   border-right-style: solid;
   border-bottom-style: none;
   border-left-style: none;
   border-color:#808080;
   border-width: .25px;
+  overflow-y: auto;
+  box-shadow: 0px 3px 24px -8px rgba(128, 126, 126, 0.75);
 }
 .chatOnlineWrapper {
   padding: 0px;
@@ -117,6 +159,7 @@ h3{
 }
 h6{
  margin-top: 10px;
+ text-align: center;
   display: inline-flex;
   font-family: Futara;
   color: #05830f;
@@ -129,7 +172,7 @@ h5{
    color: #05830f;
  
  }
-@media screen and (max-width: 60px) {
+@media screen and (max-width: 60pxv) {
   .chatMenu {
     flex: 1;
   }
@@ -190,7 +233,7 @@ h5{
   border-radius: 20px;
   /* background-color: #eff0f2; */
   background-image: linear-gradient(to right, rgb(196, 243, 246) , rgba(248, 248, 248, 0.489));
-  
+  margin-top: 10px;
   color: rgb(0, 0, 0);
   max-width: 300px;
 }
@@ -235,7 +278,7 @@ padding-top: 25px;
     border-radius: 20px;
     background-image: linear-gradient(to right, rgb(203, 199, 203) , rgb(240, 245, 245));
     /* background-color: #7cb1f7; */
-   
+    margin-top: 10px;
     max-width: 300px;
 } 
 .messageOwn1{
@@ -287,6 +330,7 @@ padding-top: 25px;
   background-color: limegreen;
   position: absolute;
   top: 2.5px;
+  margin-left: 15px;
   
 }
 @media screen and (max-width: 60px) {
@@ -322,9 +366,16 @@ input:focus {
   
   background-color: red;
 }
+/* .ssss{
+  height: 790px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+} */
 .messenger{
   
-  height: calc(100vh - 70px);
+  height: calc(100vh - 130px);
+  
   display: flex;
 }
 h1 {
