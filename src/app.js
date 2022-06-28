@@ -10,15 +10,21 @@ import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
 import message from "./components/assets/message.webp"
 
-//import ChatSection from "./components/ChatSection/ChatSection";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import './App.css'
+
 
 //--------------------------
 //chat
 import ChatPage from "./components/Chat/ChatPage";
-import LoginTest from "./components/Chat/Login";
-import {
-  WorkSpaceForm,
 
+import {
+  Home,
+  WorkSpaceForm,
   History,
   ResponseTable,
   RequestTable,
@@ -153,20 +159,21 @@ const App = () => {
     }
   };
   return (
-    <React.Fragment>
-      <div style={{backgroundColor:"ghostwhite"}} className="container-lx" >
-        {/* <Header /> */}
-        <LoginProvider>
-          <Header submit={(event) => getUsername(event)} />
-          {/* <When condition={!auth.loggedIn}> */}
-          <Signin />
-          <Signup />
-          {/* </When> */}
+     <div>
+    <div style={{ backgroundColor: "ghostwhite" }} className="container-lx" >
 
-        </LoginProvider>
-        <div className="ssss">
-        <div>
-          <span style={{backgroundColor:"white"}}className="span1">
+      {/* <Header /> */}
+      <LoginProvider>
+        <Header submit={(event) => getUsername(event)} />
+        {/* <When condition={!auth.loggedIn}> */}
+        <Signin />
+        <Signup />
+        {/* </When> */}
+
+      </LoginProvider>
+      <div className="ssss">
+        <div className = 'about'>
+          <span style={{ backgroundColor: "white" }} className="span1">
             {/* chat  */}
             {show ?
               <div stclassName="span2" style={
@@ -186,65 +193,74 @@ const App = () => {
             }
             {/* chat */}
           </span>
-        
-            <span className="span2" >
-  
-            <div style={{
-              marginLeft:"100px"
-            }} >
-              <UrlInput
-                url={url}
-                setUrl={setUrl}
-                method={method}
-                setMethod={setMethod}
-                setHeaders={setHeaders}
-              />
-              <RequestTable
-                body={body}
-                setBody={setBody}
-                headers={headers}
-                setHeaders={setHeaders}
-                sendHandler={sendHandler}
-              />
-              <ResponseTable
-                responseData={responseData}
-                responseCookie={responseCookie}
-                responseHeaders={responseHeaders}
-                responseStatus={responseStatus}
-              />
-            </div>
-          
-          </span>
-          <span className="span3"
-          >
-          <div className="req_His_btn">
-            <History
-              history={history}
-              setMethod={setMethod}
-              setHeaders={setHeaders}
-              setUrl={setUrl}
-              setBody={setBody}
-              clearResponseTable={clearResponseTable}
-            />
-            <WorkSpaceForm />
-          </div>
-        </span>
-        </div>
+
+
+          <BrowserRouter>
+            <Routes>
+              <Route exact path='/getdude' element={
+
+                <div>
+                <UrlInput
+                  url={url}
+                  setUrl={setUrl}
+                  method={method}
+                  setMethod={setMethod}
+                  setHeaders={setHeaders}
+                />,
+                <RequestTable
+                  body={body}
+                  setBody={setBody}
+                  headers={headers}
+                  setHeaders={setHeaders}
+                  sendHandler={sendHandler}
+                />,
+                <ResponseTable
+                  responseData={responseData}
+                  responseCookie={responseCookie}
+                  responseHeaders={responseHeaders}
+                  responseStatus={responseStatus}
+                />,
+
+
+
+               
+                  <div className="req_His_btn">
+                    <History
+                      history={history}
+                      setMethod={setMethod}
+                      setHeaders={setHeaders}
+                      setUrl={setUrl}
+                      setBody={setBody}
+                      clearResponseTable={clearResponseTable}
+                    />
+                    <WorkSpaceForm />
+                  </div>
+                  
+                
+                </div>
+
+              }/>
+                
+            
+              <Route exact path='/' element={<Home />} />
+            </Routes>
+            </BrowserRouter>
+        </div>   
         <img src={message}
-        style={{
-          marginLeft:"40px",
-          marginBottom:"30px"
-        }}
+          style={{
+            marginLeft: "40px",
+            marginBottom: "30px"
+          }}
           alt="" width="100px" height="100px"
           onClick={() => setShow(!show)}></img>
-
-       
       </div>
-      </div>
+      <Footer />
+    </div>
     
-       <Footer />
-      
-    </React.Fragment>
+    
+ 
+  
+  </div>
   );
 };
 

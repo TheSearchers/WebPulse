@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from "react";
 import { When } from "react-if";
 import { LoginContext } from "../Auth/auth";
-import logo from '../assets/getDude.gif'
+import logo from '../../assets/logo.png'
 import { scroller } from "react-scroll";
 import {
   MDBNavbar,
@@ -13,6 +13,7 @@ import {
   MDBContainer,
   MDBIcon
 } from 'mdb-react-ui-kit';
+import "./Header.css";
 
 
 export default function ButtonAppBar() {
@@ -73,22 +74,24 @@ export default function ButtonAppBar() {
   <img  src = {logo} style = {{height : '50px' , marginRight : '37px'}}/>
 </MDBNavbar>
 
-<div
-  className='p-5 text-center bg-image'
-  style={{ backgroundImage: "url('https://img.freepik.com/free-photo/4k-gray-mandala-noise-background_612031-6.jpg')", height: 607 , marginBottom : '25px' }}
->
-  <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-    <div className='d-flex justify-content-center align-items-center h-100'>
-      
-      <div className='text-white'>
-        
-        <a className='btn btn-outline-light btn-lg' role='button' onClick={scrollToSection}>
-        Get Started
-        </a>
-      </div>
+<div className="app__header app__wrapper section__padding" id="home" style={{}}>
+    <div className="app__wrapper_info">
+      <h1 className="app__header-h1">New way to check your WebSite</h1>
+      <p className="p__opensans" style={{ margin: "2rem 0" }}>
+        You have new project, or new WebSitem and want to check the requests and
+        responses of it. Or you are not sure if that URL is really exist for
+        that site, and you have to make sure it is working probably. with new
+        experience, our web application provides that and more{" "}
+      </p>
+      <button type="button" className="custom__button">
+        Check your webSite
+      </button>
+    </div>
+
+    <div className="app__wrapper_img">
+      <img src={logo} alt="header_img" />
     </div>
   </div>
-</div>
 
 </header>
   );
