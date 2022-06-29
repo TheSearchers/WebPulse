@@ -8,11 +8,13 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 
-const UrlInput = ({ setUrl, method, setMethod }) => {
+
+const UrlInput = ({ url,setUrl, method, setMethod }) => {
   const [choice, setChoice] = useState({method});
   const handleChoice = (event) => {
     setChoice(event.target.value);
   };
+  
 
   return (
     <React.Fragment>
@@ -22,7 +24,7 @@ const UrlInput = ({ setUrl, method, setMethod }) => {
           aria-label="url"
           aria-describedby="basic-addon1"
           style={{width : 500}}
-          
+          value = {url}
           onChange={(e) => setUrl(e.target.value)}
         />
      <Box sx={{ width: 120 }}>

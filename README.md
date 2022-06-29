@@ -10,7 +10,7 @@ _It provides you with stylish UI and not complicated as well as a dedicated cust
 ## How to use it ? 
 * `git clone https://github.com/TheSearchers/webpulse.git`
 * run 	`npm install` 
-* `npm run start`
+* `npm run start `
 * **and enjoy**
 
 ## WireFrame
@@ -21,3 +21,4 @@ _It provides you with stylish UI and not complicated as well as a dedicated cust
 - [MDBOOTSTRAP](https://mdbootstrap.com/docs/b5/react/)
 - [MATERIAL UI](https://mui.com/material-ui/getting-started/installation/)
 - [CORE UI](https://coreui.io/)
+- [REACT TOASTIFY](https://fkhadra.github.io/react-toastify/introduction)

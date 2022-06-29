@@ -1,0 +1,21 @@
+.data {
+  padding-left: 40px;
+}
+.text-white{
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  
+}
+.form-ss{
+  display: flex;
+  flex-direction: row;
+}
+.list{
+  color: antiquewhite;
+  background-color: grey;
+  width: 20%;
+  margin-left: 50px;
+  height: 250px;
+  overflow: scroll;
+}
