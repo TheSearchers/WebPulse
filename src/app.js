@@ -8,14 +8,17 @@ import Signup from "./components/form/signup";
 import LoginProvider from "./components/Auth/auth";
 import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
-import message from "./components/assets/message.gif";
+import message from "./components/assets/message.webp";
 import Landing from "./components/landing/landing";
+import Workspace from "./components/WorkSpaces/WorkSpace";
+import axios from 'axios';
+import cookie from 'react-cookies';
 //import ChatSection from "./components/ChatSection/ChatSection";
 
 //--------------------------
 //chat
 import ChatPage from "./components/Chat/ChatPage";
-import LoginTest from "./components/Chat/Login";
+
 import {
   WorkSpaceForm,
   History,
@@ -32,37 +35,52 @@ toast.configure();
 const App = () => {
   //-----------------------------
   //chat
-  const [show, setShow] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [showImgChat, setShowImgChat] = useState(true);
   const [userName, setUserName] = useState("");
   const [usersList, addUsers] = useState([]);
   //const [messages, setMessages] = useState([]);
+  const handleChatImg = () => {
+    setShowImgChat(true)
+    setShowChat(false)
+  };
+ 
 
   const getUsername = (fetched_userName) => {
-    setUserName(fetched_userName);
-    //socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected.
-    socket.auth = { fetched_userName };
+    //console.log("+++++ "+usersList.includes(fetched_userName))
+    
+       setUserName(fetched_userName);
+        //socketio-auth implements two-step authentication: upon connection, the server marks the clients as unauthenticated and listens to an authentication event. If a client provides wrong credentials or doesn't authenticate after a timeout period it gets disconnected. 
+        socket.auth = { fetched_userName };
+        
     socket.connect();
-  };
-
-  socket.on("users", (users) => {
-    users.forEach((user) => {
-      user.self = user.userID === socket.id;
-    });
-    users = users.sort((a, b) => {
-      if (a.self) return -1;
-      if (b.self) return 1;
-      if (a.username < b.username) return -1;
-      return a.username > b.username ? 1 : 0;
-    });
-    addUsers(users);
-  });
-
-  socket.on("user connected", (user) => {
-    addUsers([...usersList, user]);
-  });
-
-  //----------------------
+      };
+    
+      socket.on("users", (users) => {
+        users.forEach((user) => {
+          user.self = user.userID === socket.id;
+        });
+        users = users.sort((a, b) => {
+          if (a.self) return -1;
+          if (b.self) return 1;
+          if (a.username < b.username) return -1;
+          return a.username > b.username ? 1 : 0;
+        });
+         //console.log(users)
+         console.log("users socket   " +users);
+        addUsers(users);
+      });
+    
+      socket.on("user connected", (user) => {
+        
+        console.log(user);
+        addUsers([...usersList, user]);
+      });
+    
+      //----------------------
   const auth = useContext(LoginContext);
+  const [history_id,setHistory_id]=useState();
+  const [workSpace_id,setWorkSpaceId]=useState();
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("");
   const [method, setMethod] = useState("");
@@ -147,17 +165,40 @@ const App = () => {
       console.log(error); //
     }
   };
+  async function saveRequest(e){
+    e.preventDefault();
+    // console.log(auth.API);
+        const res=await axios({
+            method: 'post',
+            url:`http://localhost:3009/workspace/${workSpace_id}/create-req`, 
+            headers: {
+      
+              "Authorization": `Bearer ${cookie.load("userData").token}`,
+            },
+            data:{
+              url_name:url,
+              method_name:method,
+            }
+            
+          })
+        
+    
+}
   return (
-    <React.Fragment>
+<>
       <Landing />
       <div className="container-lx">
         {/* <Header /> */}
         <LoginProvider>
-          <Header />
+          <Header handleChatImg={handleChatImg}  usersList={usersList} submit={(event) => getUsername(event)}/>
           {/* <When condition={!auth.loggedIn}> */}
           <Signin />
           <Signup />
           {/* </When> */}
+          <Workspace setWorkSpaceId={setWorkSpaceId} 
+         workSpace_id={workSpace_id} 
+         setHistory_id={setHistory_id} 
+         history_id={history_id}/>
         </LoginProvider>
 
         <div
@@ -178,7 +219,7 @@ const App = () => {
               clearResponseTable={clearResponseTable}
             />
 
-            <WorkSpaceForm />
+            {/* <WorkSpaceForm /> */}
           </div>
           <div className="col">
             <div className="d-flex flex-column justify-content-between align-items-center">
@@ -195,6 +236,8 @@ const App = () => {
                 headers={headers}
                 setHeaders={setHeaders}
                 sendHandler={sendHandler}
+                workSpace_id={workSpace_id}
+                  saveRequest={saveRequest}
               />
               <ResponseTable
                 responseData={responseData}
@@ -206,31 +249,53 @@ const App = () => {
           </div>
         </div>
       </div>
-      {/* chat  */}
-      {show ? (
-        <div
-          stclassName="App"
-          style={{
-            width: "30",
-          }}
-        >
-          {!userName ? (
-            <LoginTest submit={(event) => getUsername(event)} />
-          ) : (
-            <ChatPage user={userName} connectedUsers={usersList} />
-          )}
-        </div>
-      ) : null}
-      {/* chat */}
-      <img
-        src={message}
-        alt=""
-        width="100px"
-        height="100px"
-        onClick={() => setShow(!show)}
-      ></img>
+      <span style={{backgroundColor:"white"}}className="span1">
+            {/* chat  */}
+            {showChat ?
+              <div stclassName="span2" style={
+                {
+                  width: '30'
+                }
+              }>
+                {!userName ? (
+                  // <LoginTest submit={(event) => getUsername(event)} />
+                  //alert("Please logIn befor you open the Chat "),
+                  toast.error("Please logIn befor you open the Chat !", {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  })
+                ,
+                  setShowChat(false),
+                  setShowImgChat(true)
+                ) : (
+                  <ChatPage handleChatImg={handleChatImg} user={userName} connectedUsers={usersList} />
+                )}
+              </div> : null
+
+            }
+            {/* chat */}
+          </span>
+          { showImgChat ?
+        <img src={message}
+        style={{
+          marginLeft:"40px",
+          marginBottom:"30px"
+        }}
+          alt="" width="100px" height="100px"
+          onClick={() =>{ setShowChat(!showChat)
+          setShowImgChat(!showImgChat)
+          }
+          }></img>
+          :null
+          
+      }
       <Footer />
-    </React.Fragment>
+      </>
   );
 };
 
