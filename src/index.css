@@ -74,3 +74,16 @@ html,body,#root, .App{
 .section-heading span {
   color: #83056a;
 }
+
+.header-bar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-bar img {
+  width: 100px
+}
+
+.header-bar nav {
+  align-items: center;
+}

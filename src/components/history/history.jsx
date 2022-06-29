@@ -34,49 +34,34 @@ const History = ({
 
   return (
     <React.Fragment>
-      <ul className="list-group ms-5 d-inline-block full-width">
-        {/* <li className="list-group-item d-flex justify-content-center align-items-center pe-2 border-1 border-warning"> */}
-        {/* <h3 onClick={()=>handleShow()} className="text-warning">History Table</h3> */}
-        <MDBBtn onClick={toggleShow} color="dark">
-          Your Requests
-        </MDBBtn>
-        {/* </li> */}
-        <MDBCollapse show={show}>
-          {!show ? (
-            <div></div>
-          ) : !history.length ? (
-            <div className="text-center">No Requests have been made</div>
-          ) : (
-            <MDBTable
-              className="table-info"
-              style={{ marginLeft: "50px", float: "left" }}
-            >
-              <MDBTableHead>
-                <tr>
-                  <th scope="col">Method</th>
-                  <th scope="col">URL</th>
-                </tr>
-              </MDBTableHead>
-              <MDBTableBody>
-                {history.map((requestItem) => (
-                  <tr>
-                    <th
-                      scope="row"
-                      key={requestItem.id}
-                      id={requestItem.id}
-                      onClick={clickHistoryItemHandler}
-                    >
-                      {requestItem.method}
-                    </th>
+      <h2>Requests</h2>
+      <MDBTable
+        className="table-info"
+        
+      >
+        <MDBTableHead>
+          <tr>
+            <th scope="col">Method</th>
+            <th scope="col">URL</th>
+          </tr>
+        </MDBTableHead>
+        <MDBTableBody>
+          {history.map((requestItem) => (
+            <tr>
+              <th
+                scope="row"
+                key={requestItem.id}
+                id={requestItem.id}
+                onClick={clickHistoryItemHandler}
+              >
+                {requestItem.method}
+              </th>
 
-                    <td> {requestItem.url}</td>
-                  </tr>
-                ))}
-              </MDBTableBody>
-            </MDBTable>
-          )}
-        </MDBCollapse>
-      </ul>
+              <td> {requestItem.url}</td>
+            </tr>
+          ))}
+        </MDBTableBody>
+      </MDBTable>
     </React.Fragment>
   );
 };
