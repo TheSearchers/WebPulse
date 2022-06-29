@@ -152,10 +152,10 @@ margin-right: 6px;
 h3{
  
   display: inline-flex;
-  font-family: Futara;
-  padding-left: 50px;
-  font-size: 200%;
+  /*padding-left: 50px;
+  font-size: 200%;*/
   color: #83056a;
+  text-transform: capitalize;
   
   
 }
@@ -163,14 +163,12 @@ h6{
  margin-top: 10px;
  text-align: center;
   display: inline-flex;
-  font-family: Futara;
   color: #05830f;
 
 }
 h5{
   margin-top: 10px;
    display: inline-flex;
-   font-family: Futara;
    color: #05830f;
  
  }
@@ -388,10 +386,10 @@ h1 {
 
 h2 {
  
-  text-decoration-line: underline;
+ 
   text-decoration-thickness: 1px;
-  font-family: Futara;
-  color: #c7b7fe; 
+  
+   
   font-size: 50px;
 }
 

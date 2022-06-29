@@ -23,6 +23,11 @@ export default function ButtonAppBar(props) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Webpuls
           </Typography>
+          <nav>
+          <a href = '/' > Home </a>
+            <a href = '/getdude' > getDude </a>
+          
+            </nav>
           <When condition={!auth.loggedIn}>
             
             <LoginIcon />
@@ -47,6 +52,9 @@ export default function ButtonAppBar(props) {
               Logout
             </Button>
           </When>
+         
+            
+          
         </Toolbar>
       </AppBar>
     </Box>

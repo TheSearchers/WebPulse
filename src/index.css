@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,8 +15,62 @@
   }
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 html,body,#root, .App{
   height:100vh;
   margin:0;
+}
+
+.about {
+  width: 1140px;
+  margin: auto
+}
+
+.about a {
+  display: inline-block
+}
+
+.about img{
+  display: bolck;
+  width : 100% ;
+  height : 250px;
+  object-fit: cover;
+  
+}
+
+.feature-icon {
+  font-size: 100px;
+  color: #83056a;
+}
+
+.top-footer {
+  justify-content: space-between;
+}
+
+.footer-about {
+  width: 300px;
+}
+
+.section-heading {
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  width: 100px;
+  height: 2px;
+  background: #83056a;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1px;
+} 
+
+.section-heading span {
+  color: #83056a;
 }
