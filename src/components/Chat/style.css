@@ -42,6 +42,7 @@ box-shadow: 0px 3px 24px -8px rgba(128, 126, 126, 0.75);
 
 .chatBox {
   flex: 5.5;
+  background-color: #808080;
 }
 
 .chatBoxWrapper {
@@ -145,6 +146,7 @@ margin-right: 6px;
   font-size: 50px;
   color: rgb(224, 220, 220);
   cursor: default;
+  
 }
 
 h3{

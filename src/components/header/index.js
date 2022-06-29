@@ -15,7 +15,7 @@ export default function ButtonAppBar(props) {
 
   return (
     <>
-    {console.log("insid == > ",auth.currUser)}
+    {console.log("inside == > ",auth.currUser)}
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar sx={{ backgroundColor: "#212121" }}>
@@ -34,7 +34,7 @@ export default function ButtonAppBar(props) {
           </When>
           <When condition={auth.loggedIn}>
           { auth.currUser != "unnamed" ?
-              props.submit(auth.currUser) : null 
+              props.submit(auth.currUser) : props.submit("")
             }
             <LogoutIcon />
             <Button color="inherit" onClick={()=>

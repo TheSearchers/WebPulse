@@ -67,7 +67,7 @@ const soundPlay=(src)=>{
       return (
         <>
         
-        <div
+        <div 
           key={index}
           
           className="messageOwn"
@@ -76,7 +76,9 @@ const soundPlay=(src)=>{
            
        
           
-           <div className="messageOwn1">
+           <div className="messageOwn1" s
+           
+           >
           
           {message.content}
           <img
@@ -139,7 +141,8 @@ const soundPlay=(src)=>{
  
   return (
     <span className= "chatBoxWrapper">
-      <div className="chatBoxTop">{showMessages}</div>
+      <div className="chatBoxTop"
+      >{showMessages}</div>
       <div className="chatBoxBottom"> 
          <form className="chatBoxBottom"
          onSubmit={(e) => {
