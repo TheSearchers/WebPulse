@@ -6,6 +6,7 @@
     "@coreui/react": "^4.2.2",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@heroicons/react": "^1.0.5",
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.88",
@@ -33,13 +34,14 @@
     "react-pro-sidebar": "^0.7.1",
     "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-scroll": "^1.8.7",
     "react-spinners": "^0.12.0",
     "react-spinners-kit": "^1.9.1",
     "react-toastify": "^7.0.4",
     "socket.io": "^4.5.1",
     "socket.io-client": "^4.5.1",
+    "styled-components": "^5.3.5",
     "superagent": "^7.1.6",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.4.18",
@@ -69,5 +71,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.4"
   }
 }

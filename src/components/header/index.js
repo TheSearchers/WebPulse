@@ -15,41 +15,42 @@ export default function ButtonAppBar(props) {
 
   return (
     <>
-      {console.log("insid == > ", auth.currUser)}
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar sx={{ backgroundColor: "#0f606a" }}>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Webpuls
-            </Typography>
-            <When condition={!auth.loggedIn}>
-              <LoginIcon />
-              <Button
-                color="inherit"
-                onClick={() => {
-                  auth.onOpenModal();
-                  props.handleChatImg();
-                }}
-              >
-                Login
-              </Button>
-            </When>
-            <When condition={auth.loggedIn}>
-              {auth.currUser != "unnamed" ? props.submit(auth.currUser) : null}
-              <LogoutIcon />
-              <Button
-                color="inherit"
-                onClick={() => {
-                  auth.logout();
-                  props.handleChatImg();
-                }}
-              >
-                Logout
-              </Button>
-            </When>
-          </Toolbar>
-        </AppBar>
-      </Box>
+
+    {console.log("inside == > ",auth.currUser)}
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar sx={{ backgroundColor: "#212121" }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Webpuls
+          </Typography>
+          <When condition={!auth.loggedIn}>
+            
+            <LoginIcon />
+            <Button color="inherit" onClick={()=>{
+              auth.onOpenModal();
+              props.handleChatImg()
+            }}>
+              Login
+            </Button>
+          </When>
+          <When condition={auth.loggedIn}>
+          { auth.currUser != "unnamed" ?
+              props.submit(auth.currUser) : props.submit("")
+            }
+            <LogoutIcon />
+            <Button color="inherit" onClick={()=>
+          {
+            auth.logout() ;
+          props.handleChatImg()
+          }
+          }>
+              Logout
+            </Button>
+          </When>
+        </Toolbar>
+      </AppBar>
+    </Box>
+
     </>
   );
 }
