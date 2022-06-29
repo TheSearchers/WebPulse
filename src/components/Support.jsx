@@ -15,7 +15,7 @@ const Support = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 relative gap-x-8 gap-y-16 px-4 pt-12 sm:pt-20 text-black">
+        <div className="grid grid-cols-1 lg:grid-cols-3 relative gap-x-8 gap-y-16 px-4 pt-12 sm:pt-20 text-black service-component">
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
               <BiSupport className='feature-icon' />

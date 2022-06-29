@@ -23,7 +23,7 @@ export default function ButtonAppBar(props) {
       <AppBar position="static">
         <Toolbar className="header-bar" sx={{ backgroundColor: "#212121" }}>
           <img src = {logo} alt = "/" />
-          <nav className="flex gap-3">
+          <nav className="flex gap-3 menue">
             <a href = '/' > Home </a>
             <a href = '/getdude' > getDude </a>
           

@@ -316,7 +316,7 @@ style={{
           transform: 'rotate(-90deg)'
 
         }}
-          alt="" width="100px" height="100px"
+          alt="" width="65px" height="auto"
           onClick={() => {
             setShowChat(!showChat)
             setShowImgChat(!showImgChat)

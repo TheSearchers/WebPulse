@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
+@import url('https://i.gifer.com/6WKs.gif');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -86,4 +86,55 @@ html,body,#root, .App{
 
 .header-bar nav {
   align-items: center;
+}
+
+.background{
+  background-image:url('https://www.designbolts.com/wp-content/uploads/2018/01/Simple-Purple-Laptop-HD-WallPaper-1920-x-1080-px-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}
+.menue a{
+  color: #fff;
+}
+.menue a:hover , .menue button:hover{
+  color: #83056a;
+}
+
+.text-2xl , .text-5xl{
+  color: #fff;
+}
+
+.background > div > div > button {
+  background: #83056a;
+  border: 1px solid;
+}
+
+.background > div > div > button:hover {
+  background: #fff;
+  border: 1px solid #83056a;
+  color:#83056a ;
+}
+
+.card-title{
+  
+  color:#83056a ;
+  font-size: 1.6rem;
+}
+
+.card-body nav a {
+  color:#83056a ;
+  font-size: 22px;
+  border: 1px solid;
+  margin: 0 2px;
+  border-radius: 25px;
+  padding: 3px;
+}
+
+p.card-text {
+  font-size: 0.85rem;
+}
+
+.service-component .text-2xl{
+  color: #83056a;
 }

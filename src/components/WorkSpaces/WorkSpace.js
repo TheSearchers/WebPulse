@@ -166,22 +166,23 @@ export default function Workspace(props) {
               </ListItemButton>
             </ListItem>
                 <div id={`request-${item.workspace_id}`} className='saved-request-list-item'>
-                {savedRequests ? savedRequests.map((item, index) => {
+                {savedRequests   ? savedRequests.map((child, index) => {
           return (
+            child.workspace_id == item.workspace_id ? 
             <ListItem disablePadding key={index}
             >
               <ListItemButton
-                id={item.workspace_id}
+                id={child.workspace_id}
               >
                 <ListItemIcon >
                   <PersonAddIcon />
                 </ListItemIcon>
-                <ListItemText primary={`${item.method_name} ${item.url_name}`} />
+                <ListItemText primary={`${child.method_name} ${child.url_name}`} />
                 <ListItemIcon >
-                  <StarIcon onClick={() => deleteRequest(item)} />
+                  <StarIcon onClick={() => deleteRequest(child)} />
                 </ListItemIcon>
               </ListItemButton>
-            </ListItem>
+            </ListItem> : null
 
           )
         }) : null}
