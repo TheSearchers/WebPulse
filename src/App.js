@@ -308,13 +308,14 @@ style={{
       </span>
       {showImgChat ?
         <img src={message}
-          style={{
+        style={{
 
-            position: 'fixed',
-            bottom: '10px',
-            left: '20px'
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
+          transform: 'rotate(-90deg)'
 
-          }}
+        }}
           alt="" width="100px" height="100px"
           onClick={() => {
             setShowChat(!showChat)

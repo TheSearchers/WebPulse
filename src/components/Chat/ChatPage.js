@@ -1,4 +1,4 @@
-import './style.css'
+import './style.scss'
 import React, { useState } from "react";
 import Chatwindow from "./Chatwindow";
 import Sidebar from "./Sidebar";
@@ -14,7 +14,12 @@ const Home = (props) => {
   };
 
   return (
-    <div>
+    <div style={{
+      position: 'fixed',
+      bottom: "30px",
+      right: "30px",
+     width:"400px"
+    }}>
       <div className="currentUser"> {props.user}
         <label style={{
           marginLeft: "280px"
