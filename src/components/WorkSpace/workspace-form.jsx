@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MDBCard, MDBCardBody, MDBCardHeader } from "mdb-react-ui-kit";
 import { MDBInputGroup, MDBBtn, MDBCollapse } from "mdb-react-ui-kit";
+import * as React from "react";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import StarIcon from "@mui/icons-material/Star";
 import "../history/history.css";
 import "./workspace.css";
 
-export default function WorkSpaceForm() {
+export default function WorkSpaceForm(props) {
   const [show, setShow] = useState(false);
   const [data, setData] = useState(false);
   const [workSpace, setworkSpace] = useState("");
+const [friend,setFriend]=useState({
+  workspace_name:""
+})
 
   const showForm = () => {
     setShow(!show);
@@ -20,55 +30,71 @@ export default function WorkSpaceForm() {
     let newWorkSpace = event.target.value;
     setworkSpace(newWorkSpace);
   };
+function handleChange(event){
+  
+    event.preventDefault();
+    setFriend({...friend,[event.target.name] : event.target.value})
+    console.log(friend);
 
+}
   return (
     <React.Fragment>
       <ul className="list-group ms-5 d-inline-block full-width">
-        <MDBBtn onClick={showForm} color="dark">
-          Add WorkSpace
+        <MDBBtn
+          onClick={() => {
+            showForm();
+            props.getWorkSpaces();
+          }}
+          color="dark"
+          style={{ width: "20%" }}
+        >
+          My WorkSpace
         </MDBBtn>
-        <MDBCollapse show={show}>
+
+        <MDBCollapse style={{ color: "white" }} show={show}>
           {!show ? (
             <div></div>
           ) : (
             <div>
               {showForm && (
-                <MDBCard
-                  background="dark"
-                  className="text-white"
-                  style={{ maxWidth: "18rem" }}
-                >
-                  <MDBCardHeader>Add new WorkSpace</MDBCardHeader>
-                  <MDBCardBody>
-                    <MDBInputGroup className="mb-3">
-                      <input
-                        className="form-control"
-                        type="text"
-                        placeholder="WorkSpace Name"
-                        onChange={handlWorkSpace}
-                      />
-                      <MDBBtn
-                        style={{ backgroundColor: "gray" }}
-                        onClick={showData}
-                      >
-                        create
-                      </MDBBtn>
-
-                      <>
-                        {/* <li
-                              key={requestItem.id}
-                              id={requestItem.id}
-                              className="list-group-item d-flex btn justify-content-between align-items-center pe-2 border-1 border-warning border-top-0"
+                <div className="list">
+                  <MDBInputGroup className="mb-3">
+                    <input
+                      onChange={handleChange}
+                      name="workspace_name"
+                      className="form-control"
+                      placeholder="Enter email to add friend"
+                      required
+                    />
+                  </MDBInputGroup>
+                  {props.workspaces
+                    ? props.workspaces.map((item, index) => {
+                        return (
+                          <ListItem disablePadding key={index}>
+                            <ListItemButton
+                              id={item.workspace_id}
+                              onClick={() => {
+                                props.setWorkSpaceId(item.workspace_id);
+                                props.handelShowRequests(item.workspace_id);
+                              }}
                             >
-                              {requestItem.url}
-                              <span className="badge bg-primary rounded-pill">
-                                {requestItem.method}
-                              </span>
-                            </li> */}
-                      </>
-                    </MDBInputGroup>
-                  </MDBCardBody>
-                </MDBCard>
+                              <ListItemIcon>
+                                <PersonAddIcon
+                                  onClick={() => props.addFreind(item)}
+                                />
+                              </ListItemIcon>
+                              <ListItemText primary={item.workspace_name} />
+                              <ListItemIcon>
+                                <StarIcon
+                                  onClick={() => props.deleteItem(item)}
+                                />
+                              </ListItemIcon>
+                            </ListItemButton>
+                          </ListItem>
+                        );
+                      })
+                    : null}
+                </div>
               )}
             </div>
           )}

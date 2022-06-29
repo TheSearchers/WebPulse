@@ -10,6 +10,9 @@ import { LoginContext } from "./components/Auth/auth";
 import { useContext } from "react";
 import message from "./components/assets/message.webp";
 import Landing from "./components/landing/landing";
+import Workspace from "./components/WorkSpaces/WorkSpace";
+import axios from 'axios';
+import cookie from 'react-cookies';
 //import ChatSection from "./components/ChatSection/ChatSection";
 
 //--------------------------
@@ -76,6 +79,8 @@ const App = () => {
     
       //----------------------
   const auth = useContext(LoginContext);
+  const [history_id,setHistory_id]=useState();
+  const [workSpace_id,setWorkSpaceId]=useState();
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("");
   const [method, setMethod] = useState("");
@@ -160,6 +165,25 @@ const App = () => {
       console.log(error); //
     }
   };
+  async function saveRequest(e){
+    e.preventDefault();
+    // console.log(auth.API);
+        const res=await axios({
+            method: 'post',
+            url:`http://localhost:3009/workspace/${workSpace_id}/create-req`, 
+            headers: {
+      
+              "Authorization": `Bearer ${cookie.load("userData").token}`,
+            },
+            data:{
+              url_name:url,
+              method_name:method,
+            }
+            
+          })
+        
+    
+}
   return (
 <>
       <Landing />
@@ -171,6 +195,10 @@ const App = () => {
           <Signin />
           <Signup />
           {/* </When> */}
+          <Workspace setWorkSpaceId={setWorkSpaceId} 
+         workSpace_id={workSpace_id} 
+         setHistory_id={setHistory_id} 
+         history_id={history_id}/>
         </LoginProvider>
 
         <div
@@ -191,7 +219,7 @@ const App = () => {
               clearResponseTable={clearResponseTable}
             />
 
-            <WorkSpaceForm />
+            {/* <WorkSpaceForm /> */}
           </div>
           <div className="col">
             <div className="d-flex flex-column justify-content-between align-items-center">
@@ -208,6 +236,8 @@ const App = () => {
                 headers={headers}
                 setHeaders={setHeaders}
                 sendHandler={sendHandler}
+                workSpace_id={workSpace_id}
+                  saveRequest={saveRequest}
               />
               <ResponseTable
                 responseData={responseData}

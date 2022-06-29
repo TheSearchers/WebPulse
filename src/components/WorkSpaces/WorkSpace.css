@@ -1,0 +1,12 @@
+.form-control{
+    margin-left: 5px;
+}
+.text-white{
+    color: azure;
+}
+.modal{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    
+}
