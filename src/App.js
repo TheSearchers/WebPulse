@@ -193,23 +193,6 @@ const App = () => {
   return (
     <>
 
-
-  
-      <BrowserRouter>
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path="/getDude" element={
-            
-
-            <div
-              className="row justify-content-center g-5"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "0px",
-              }}
-            >
-                  {/* <Header /> */}
       <LoginProvider>
         <Header handleChatImgLogOut={handleChatImgLogOut} handleChatImg={handleChatImg} usersList={usersList} submit={(event) => getUsername(event)} />
         {/* <When condition={!auth.loggedIn}> */}
@@ -221,12 +204,21 @@ const App = () => {
           setHistory_id={setHistory_id}
           history_id={history_id} /> */}
         {/* </When> */}
-        <Workspace setWorkSpaceId={setWorkSpaceId}
-          workSpace_id={workSpace_id}
-          setHistory_id={setHistory_id}
-          history_id={history_id} /> ,
 
       </LoginProvider>,
+
+
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path="/getDude" element={
+
+
+            <div
+
+
+            >
+
 
 
               <div className="col-4">
@@ -239,10 +231,15 @@ const App = () => {
                   clearResponseTable={clearResponseTable}
                 /> ,
 
+                <Workspace setWorkSpaceId={setWorkSpaceId}
+                  workSpace_id={workSpace_id}
+                  setHistory_id={setHistory_id}
+                  history_id={history_id} /> ,
+
 
                 {/* </div>  */}
-                <div className="col">
-                  <div className="d-flex flex-column justify-content-between align-items-center">
+                <div >
+                  <div >
                     <UrlInput
                       url={url}
                       setUrl={setUrl}
