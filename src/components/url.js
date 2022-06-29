@@ -17,7 +17,7 @@ const UrlInput = ({ url,setUrl, method, setMethod }) => {
   
 
   return (
-    <React.Fragment id = 'scroll'>
+    <React.Fragment>
       <div className="d-flex flex-row input-group mb-4  justify-content-center">
 
         <MDBInput label='Enter URL' id='typeText' type='text'

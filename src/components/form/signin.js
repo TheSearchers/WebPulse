@@ -84,7 +84,7 @@ export default function Signin() {
 
               <label className="reg-label">
                 New to GetDude ?{" "}
-                <span class="span" onClick={auth.renderedForm}>
+                <span className="span" onClick={auth.renderedForm}>
                   {" "}
                   Register{" "}
                 </span>

@@ -328,14 +328,15 @@ body {
   background-color: rgb(16, 86, 95);
   margin: 0;
   padding: 0;
-  height: 90px;
+  height: 120px;
   text-align: center;
   padding-top: 20px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
+
 .footer p {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
 }
 .footer span {
