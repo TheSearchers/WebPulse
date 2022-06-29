@@ -103,7 +103,7 @@ function handleChange(event){
       {!data ? (
         <div></div>
       ) : (
-        <div class="data">
+        <div className="data">
           <br></br>
 
           <h3>

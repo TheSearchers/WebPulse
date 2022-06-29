@@ -15,6 +15,7 @@ export default function ButtonAppBar(props) {
 
   return (
     <>
+
     {console.log("inside == > ",auth.currUser)}
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -49,6 +50,7 @@ export default function ButtonAppBar(props) {
         </Toolbar>
       </AppBar>
     </Box>
+
     </>
   );
 }

@@ -96,7 +96,7 @@ export default function Register() {
 
               <label>
                 Already have an account?{" "}
-                <span class="span" onClick={auth.renderedForm}>
+                <span className="span" onClick={auth.renderedForm}>
                   Login
                 </span>
               </label>
