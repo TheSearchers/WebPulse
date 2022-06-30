@@ -10,6 +10,7 @@ import { LoginContext } from "../Auth/auth";
 import axios from 'axios';
 import cookie from 'react-cookies';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { MDBBtn,
   MDBModal,
   MDBModalDialog,
@@ -60,6 +61,7 @@ export default function Workspace(props) {
       })
     }
     toggleShow();
+    getWorkSpaces()
   }
   function handleChange(event) {
     event.preventDefault();
@@ -74,6 +76,7 @@ export default function Workspace(props) {
         "Authorization": `Bearer ${cookie.load("userData").token}`,
       },
     })
+    handelShowRequests(props.workspace_id)
     getWorkSpaces()
   }
   async function addFreind(e) {
@@ -110,7 +113,9 @@ export default function Workspace(props) {
         "Authorization": `Bearer ${cookie.load("userData").token}`,
       },
     })
-    handelShowRequests(props.workspace_id)
+    handelShowRequests(item.workspace_id)
+    getWorkSpaces()
+    
   }
 
   useEffect(() => {
@@ -118,9 +123,9 @@ export default function Workspace(props) {
   }, [auth.user.user_id])
 
   return (
-    <>
+    <div className="workspace-main-block">
     
-      <h2>WorkSpaces <button className="btn btn-success" onClick={toggleShow}>+</button></h2>
+      <h2 className="getdude-block-title">WorkSpaces <button className="btn btn-success" onClick={toggleShow}>+</button></h2>
       <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
   <MDBModalDialog>
     <MDBModalContent>
@@ -135,9 +140,7 @@ export default function Workspace(props) {
         /></MDBModalBody>
 
       <MDBModalFooter>
-        <MDBBtn color='secondary' onClick={toggleShow}>
-          Close
-        </MDBBtn>
+        
         <MDBBtn onClick ={createWorkSpace}>CREATE</MDBBtn>
       </MDBModalFooter>
     </MDBModalContent>
@@ -161,7 +164,7 @@ export default function Workspace(props) {
                 </ListItemIcon>
                 <ListItemText primary={item.workspace_name} />
                 <ListItemIcon >
-                  <StarIcon onClick={() => deleteItem(item)} />
+                  <DeleteIcon onClick={() => deleteItem(item)} />
                 </ListItemIcon>
               </ListItemButton>
             </ListItem>
@@ -174,12 +177,10 @@ export default function Workspace(props) {
               <ListItemButton
                 id={child.workspace_id}
               >
-                <ListItemIcon >
-                  <PersonAddIcon />
-                </ListItemIcon>
+               
                 <ListItemText primary={`${child.method_name} ${child.url_name}`} />
                 <ListItemIcon >
-                  <StarIcon onClick={() => deleteRequest(child)} />
+                  <DeleteIcon onClick={() => deleteRequest(child)} />
                 </ListItemIcon>
               </ListItemButton>
             </ListItem> : null
@@ -192,7 +193,7 @@ export default function Workspace(props) {
           )
         }) : null}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -6,7 +6,7 @@ import logo from '../assets/logoGif.gif';
 const Footer = () => {
   return (
 
-    <div className="w-full mt-24 bg-slate-900 text-gray-300 py-y px-2">
+    <div className="w-full mt-10 bg-slate-900 text-gray-300 py-y px-2">
       <div className="max-w-[1240px] mx-auto flex gap-3 border-b-2 border-gray-600 py-8 top-footer">
         <div className="footer-about">
           <img style={{width : '100px'}} src={logo} alt="" />
@@ -24,12 +24,12 @@ const Footer = () => {
               type="email"
               placeholder="Enter email.."
             />
-            <button className="p-2 mb-4">Subscribe</button>
+            <button className="p-2 mb-4 sub-btn">Subscribe</button>
           </form>
         </div>
       </div>
 
-      <div className="flex max-w-[1240px] mx-auto justify-between sm:flex-row text-center text-gray-500 py-2">
+      <div className="flex max-w-[1240px] mx-auto justify-between sm:flex-row text-center text-gray-500 py-3 copy-right">
         <p className="">2022 The Searchers All Rights reserved.</p>
         <div className="flex gap-3">
           <FaFacebook />
