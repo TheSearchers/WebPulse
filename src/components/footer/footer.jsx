@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="max-w-[1240px] mx-auto flex gap-3 border-b-2 border-gray-600 py-8 top-footer">
         <div className="footer-about">
           <img style={{width : '100px'}} src={logo} alt="" />
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab provident earum laboriosam assumenda saepe amet omnis perferendis iste? Repellat cum nisi natus reiciendis similique eveniet id velit assumenda laborum perferendis.</p>
+          <p>The vision of this Web Application was to devolop a simpler and less complicated way of handling your RESTful API Operation in a simple and easy to learn approach with customer support around the clock </p>
         </div>
 
         <div className="col-span-2 pt-8 md:pt-2">
