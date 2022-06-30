@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import { useContext } from "react";
 import { When } from "react-if";
 import { LoginContext } from "../Auth/auth";
-
+import logo from '../assets/getDude.gif'
 
 
 export default function ButtonAppBar(props) {
@@ -19,7 +19,7 @@ export default function ButtonAppBar(props) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar className="header-bar" sx={{ backgroundColor: "#212121" }}>
-          <logo>GetDude</logo>
+          <img src = {logo}></img>
           <nav className="flex gap-3 menue">
             <a href = '/' > Home </a>
             <a href = '/getdude' > getDude </a>

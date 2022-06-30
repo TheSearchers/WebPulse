@@ -1,7 +1,7 @@
 
 import React from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-
+import logo from '../assets/getDude.gif'
 
 const Footer = () => {
   return (
