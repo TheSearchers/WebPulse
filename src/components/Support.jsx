@@ -5,7 +5,7 @@ import {BiSupport} from 'react-icons/bi'
 
 const Support = () => {
   return (
-    <div name="support" className="w-full mt-10">
+    <div name="support" className="w-full mt-10 mb-7">
     
 
       <div className="max-w-[1240px] mx-auto text-white relative">

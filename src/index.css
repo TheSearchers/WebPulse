@@ -17,12 +17,13 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  
 }
-
 
 html,body,#root, .App{
   height:100vh;
   margin:0;
+  background: #f0f0f0;
 }
 
 .about {
@@ -81,7 +82,12 @@ html,body,#root, .App{
 }
 
 .header-bar img {
-  width: 100px
+  background: #fff;
+  width: auto;
+  height: 64px;
+  padding-left: 65px;
+  padding-right: 25px;
+  margin-left: -24px;
 }
 
 .header-bar nav {
@@ -137,4 +143,130 @@ p.card-text {
 
 .service-component .text-2xl{
   color: #83056a;
+}
+ button.sub-btn {
+  background: #83056a;
+  border: 1px solid;
+}
+button.sub-btn:hover {
+  background: #fff;
+  border: 1px solid #83056a;
+  color:#83056a ;
+}
+.copy-right{
+  color :#fff;
+ 
+}
+
+.copy-right svg{
+  font-size: 25px;
+}
+.copy-right svg:hover{
+  color:#83056a ;
+}
+
+.getdude-block-title{
+  border-left: 5px solid #83056a ;
+  padding-left: 10px;
+  font-size: 30px;
+}
+
+.getdude-block-title button.btn.btn-success {
+  float: right;
+  border-radius: 50px;
+  font-size: 35px;
+  width: 35px;
+  height: 35px;
+  line-height: 0;
+  text-align: center;
+  padding: 0;
+  box-shadow: none;
+  background: #83056a;
+}
+
+.getdude-block-title button.btn.btn-success:hover {
+  background: #630450;
+}
+
+.table-info.data-table {
+  background: rgba(131, 5, 106, 0.5);
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.table-info.data-table .data-table-header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.table-info.data-table .data-table-header span.left {
+  padding-right: 15px;
+}
+.table-info.data-table .data-table-body {
+  max-height: 300px;
+  overflow: auto;
+} 
+
+.table-info.data-table .data-table-body > div {
+    border-bottom: 2px solid;
+    float: left;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.table-info.data-table .data-table-body > div:last-child {
+  border: 0;
+}
+
+.table-info.data-table .data-table-body > div .left {
+  float: left;
+  padding-right: 10px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  width: 85px;
+  margin-top: 5px;
+}
+
+.table-info.data-table .data-table-body > div .right {
+  float: left;
+  width: calc(100% - 85px);
+}
+
+.table-info.data-table .data-table-body > div .left span {
+  background: #60affe;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+.table-info.data-table .data-table-body > div .left span.POST {
+  background: #49cc90;
+}
+.table-info.data-table .data-table-body > div .left span.DELETE {
+  background: #f93f3e;
+}
+.table-info.data-table .data-table-body > div .left span.PUT {
+  background:#fca131;
+}
+.table-info.data-table .data-table-body > div .left span.PATCH {
+  background: #50e3c2;
+}
+
+
+.workspace-main-block > div > .css-1nxmd3h-MuiListItem-root {
+  background: rgba(131, 5, 106, 0.5);
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.workspace-main-block h5.modal-title {
+  color: #630450;
+}
+
+.footer-about img {
+  background: #fff;
+  padding: 5px;
+  margin-bottom: 5px;
 }

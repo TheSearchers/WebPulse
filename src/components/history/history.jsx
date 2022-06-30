@@ -34,34 +34,32 @@ const History = ({
 
   return (
     <React.Fragment>
-      <h2>Requests</h2>
-      <MDBTable
-        className="table-info"
+      <h2 className="getdude-block-title">Requests</h2>
+      <div
+        className="table-info data-table"
         
       >
-        <MDBTableHead>
-          <tr>
-            <th scope="col">Method</th>
-            <th scope="col">URL</th>
-          </tr>
-        </MDBTableHead>
-        <MDBTableBody>
+        <div className="data-table-header">
+          <span className="left">Method</span>
+          <span className="right">URL</span>
+        </div>
+        <div className="data-table-body">
           {history.map((requestItem) => (
-            <tr>
-              <th
+            <div>
+              <div className="left"
                 scope="row"
                 key={requestItem.id}
                 id={requestItem.id}
                 onClick={clickHistoryItemHandler}
               >
-                {requestItem.method}
-              </th>
+                <span className={requestItem.method}>{requestItem.method}</span>
+              </div>
 
-              <td> {requestItem.url}</td>
-            </tr>
+              <div className="right"> {requestItem.url}</div>
+            </div>
           ))}
-        </MDBTableBody>
-      </MDBTable>
+        </div>
+      </div>
     </React.Fragment>
   );
 };
