@@ -1,7 +1,7 @@
 
 import React from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import logo from '../assets/logoGif.gif';
+
 
 const Footer = () => {
   return (
@@ -11,6 +11,7 @@ const Footer = () => {
         <div className="footer-about">
           <img style={{width : '100px'}} src={logo} alt="" />
           <p>The vision of this Web Application was to devolop a simpler and less complicated way of handling your RESTful API Operation in a simple and easy to learn approach with customer support around the clock </p>
+
         </div>
 
         <div className="col-span-2 pt-8 md:pt-2">
