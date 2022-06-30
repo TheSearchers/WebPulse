@@ -205,7 +205,7 @@ const App = () => {
           history_id={history_id} /> */}
         {/* </When> */}
 
-      </LoginProvider>,
+      </LoginProvider>
 
 
       <BrowserRouter>
@@ -214,11 +214,14 @@ const App = () => {
           <Route path="/getDude" element={
 
 
-            <div
-
-
-            >
-
+<div
+className="row justify-content-between gap-5 request-conteiner g-0"
+style={{
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "0px",
+}}
+>
 
 
               <div className="col-4">
@@ -229,18 +232,17 @@ const App = () => {
                   setUrl={setUrl}
                   setBody={setBody}
                   clearResponseTable={clearResponseTable}
-                /> ,
-
+                /> 
+                      <LoginProvider>
                 <Workspace setWorkSpaceId={setWorkSpaceId}
                   workSpace_id={workSpace_id}
                   setHistory_id={setHistory_id}
-                  history_id={history_id} /> ,
+                  history_id={history_id} /> 
+                  </LoginProvider>
 
-
-                {/* </div>  */}
-                <div >
-                  <div >
-                    <UrlInput
+               </div> 
+                <div className="col">
+            <div className="d-flex flex-column justify-content-between align-items-center">                    <UrlInput
                       url={url}
                       setUrl={setUrl}
                       method={method}
@@ -253,7 +255,7 @@ const App = () => {
                       headers={headers}
                       setHeaders={setHeaders}
                       sendHandler={sendHandler}
-                      workSpace_id={workSpace_id}
+                      workspace_id={workSpace_id}
                       saveRequest={saveRequest}
                     /> ,
                     <ResponseTable
@@ -265,7 +267,6 @@ const App = () => {
                   </div>
                 </div>
               </div>
-            </div>
 
 
           } />
@@ -307,14 +308,15 @@ const App = () => {
       </span>
       {showImgChat ?
         <img src={message}
-          style={{
+        style={{
 
-            position: 'fixed',
-            bottom: '10px',
-            left: '20px'
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
+          transform: 'rotate(-90deg)'
 
-          }}
-          alt="" width="100px" height="100px"
+        }}
+          alt="" width="65px" height="auto"
           onClick={() => {
             setShowChat(!showChat)
             setShowImgChat(!showImgChat)

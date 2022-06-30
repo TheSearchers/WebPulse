@@ -1,0 +1,14 @@
+.nav-pills {
+    margin: 0;
+}
+
+.request-conteiner {
+    width: 1140px;
+    margin: auto;
+    padding: 80px 0 20px 0;
+}
+
+.saved-request-list-item li {
+    padding: 0 0px 0 35px;
+
+}

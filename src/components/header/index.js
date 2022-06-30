@@ -2,13 +2,12 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useContext } from "react";
 import { When } from "react-if";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
 import { LoginContext } from "../Auth/auth";
+import logo from '../assets/getDude.gif'
+
 
 export default function ButtonAppBar(props) {
   const auth = useContext(LoginContext);
@@ -19,18 +18,14 @@ export default function ButtonAppBar(props) {
     {console.log("inside == > ",auth.currUser)}
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar sx={{ backgroundColor: "#212121" }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Webpuls
-          </Typography>
-          <nav>
-          <a href = '/' > Home </a>
+        <Toolbar className="header-bar" sx={{ backgroundColor: "#212121" }}>
+          <img src = {logo}></img>
+          <nav className="flex gap-3 menue">
+            <a href = '/' > Home </a>
             <a href = '/getdude' > getDude </a>
           
-            </nav>
           <When condition={!auth.loggedIn}>
             
-            <LoginIcon />
             <Button color="inherit" onClick={()=>{
               auth.onOpenModal();
               props.handleChatImg()
@@ -42,7 +37,6 @@ export default function ButtonAppBar(props) {
           { auth.currUser != "unnamed" ?
               props.submit(auth.currUser) : props.submit("")
             }
-            <LogoutIcon />
             <Button color="inherit" onClick={()=>
           {
             auth.logout() ;
@@ -52,6 +46,7 @@ export default function ButtonAppBar(props) {
               Logout
             </Button>
           </When>
+            </nav>
          
             
           

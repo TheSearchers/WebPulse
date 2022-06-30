@@ -1,5 +1,5 @@
 import React from "react";
-import './style.css'
+import './style.scss'
 import userpic from './user.jpg'
 const Sidebar = (props) => {
   const userList = props.connectedUsers;

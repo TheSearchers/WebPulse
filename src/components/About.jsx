@@ -6,9 +6,11 @@ const About = () => {
     <div name="" className="w-full my-32 about">
       <div className="max-w-[1240px] mx-auto">
         <div className="text-center">
-          <h2 className="text-5xl font-bold">Our Team</h2>
-          <p className="text-3xl py-6 text-gray-500">
-            Team of trusted students, decided to make new idea in web app.{" "}
+        <h2 className="text-3xl pt-20 text-slate-300 uppercase text-center section-heading">
+            <span>The</span> Searchers
+          </h2>
+          <p className="text-1xl py-6 text-gray-500">
+            Team of trusted students, decided to make new idea in web app{" "}
           </p>
         </div>
 

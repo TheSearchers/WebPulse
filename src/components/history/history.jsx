@@ -34,49 +34,32 @@ const History = ({
 
   return (
     <React.Fragment>
-      <ul className="list-group ms-5 d-inline-block full-width">
-        {/* <li className="list-group-item d-flex justify-content-center align-items-center pe-2 border-1 border-warning"> */}
-        {/* <h3 onClick={()=>handleShow()} className="text-warning">History Table</h3> */}
-        <MDBBtn onClick={toggleShow} color="dark">
-          Your Requests
-        </MDBBtn>
-        {/* </li> */}
-        <MDBCollapse show={show}>
-          {!show ? (
-            <div></div>
-          ) : !history.length ? (
-            <div className="text-center">No Requests have been made</div>
-          ) : (
-            <MDBTable
-              className="table-info"
-              style={{ marginLeft: "50px", float: "left" }}
-            >
-              <MDBTableHead>
-                <tr>
-                  <th scope="col">Method</th>
-                  <th scope="col">URL</th>
-                </tr>
-              </MDBTableHead>
-              <MDBTableBody>
-                {history.map((requestItem) => (
-                  <tr>
-                    <th
-                      scope="row"
-                      key={requestItem.id}
-                      id={requestItem.id}
-                      onClick={clickHistoryItemHandler}
-                    >
-                      {requestItem.method}
-                    </th>
+      <h2 className="getdude-block-title">Requests</h2>
+      <div
+        className="table-info data-table"
+        
+      >
+        <div className="data-table-header">
+          <span className="left">Method</span>
+          <span className="right">URL</span>
+        </div>
+        <div className="data-table-body">
+          {history.map((requestItem) => (
+            <div>
+              <div className="left"
+                scope="row"
+                key={requestItem.id}
+                id={requestItem.id}
+                onClick={clickHistoryItemHandler}
+              >
+                <span className={requestItem.method}>{requestItem.method}</span>
+              </div>
 
-                    <td> {requestItem.url}</td>
-                  </tr>
-                ))}
-              </MDBTableBody>
-            </MDBTable>
-          )}
-        </MDBCollapse>
-      </ul>
+              <div className="right"> {requestItem.url}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </React.Fragment>
   );
 };
