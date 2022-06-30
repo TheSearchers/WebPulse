@@ -11,7 +11,8 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { MDBBtn,
+import {
+  MDBBtn,
   MDBModal,
   MDBModalDialog,
   MDBModalContent,
@@ -27,6 +28,8 @@ import { MDBBtn,
 export default function Workspace(props) {
   const [basicModal, setBasicModal] = useState(false);
   const toggleShow = () => setBasicModal(!basicModal);
+  const [friendModal, setFriendModal] = useState(false)
+  const showModal = () => setFriendModal(!friendModal);
   const [show, setShow] = useState(false);
   const auth = useContext(LoginContext)
   const [workspaces, setWorkspaces] = useState([]);
@@ -92,6 +95,8 @@ export default function Workspace(props) {
       data: createWorkspace
 
     })
+    showModal();
+
   }
   async function handelShowRequests(workspace_id) {
 
@@ -115,7 +120,7 @@ export default function Workspace(props) {
     })
     handelShowRequests(item.workspace_id)
     getWorkSpaces()
-    
+
   }
 
   useEffect(() => {
@@ -124,72 +129,87 @@ export default function Workspace(props) {
 
   return (
     <div className="workspace-main-block">
-    
+
       <h2 className="getdude-block-title">WorkSpaces <button className="btn btn-success" onClick={toggleShow}>+</button></h2>
       <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
-  <MDBModalDialog>
-    <MDBModalContent>
-      <MDBModalHeader>
-        <MDBModalTitle>Add WorkSpace</MDBModalTitle>
-        <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
-      </MDBModalHeader>
-      <MDBModalBody> <input onChange={handleChange}
-        name="workspace_name"
-        placeholder="WorkSpace name"
-        required
-        /></MDBModalBody>
+        <MDBModalDialog>
+          <MDBModalContent>
+            <MDBModalHeader>
+              <MDBModalTitle>Add WorkSpace</MDBModalTitle>
+            </MDBModalHeader>
+            <MDBModalBody> <input onChange={handleChange}
+              name="workspace_name"
+              placeholder="WorkSpace name"
+              required
+            /></MDBModalBody>
 
-      <MDBModalFooter>
-        
-        <MDBBtn onClick ={createWorkSpace}>CREATE</MDBBtn>
-      </MDBModalFooter>
-    </MDBModalContent>
-  </MDBModalDialog>
-</MDBModal>
+            <MDBModalFooter>
+
+              <MDBBtn onClick={createWorkSpace}>CREATE</MDBBtn>
+            </MDBModalFooter>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
       <div>
         {workspaces ? workspaces.map((item, index) => {
           return (
             <>
-            <ListItem disablePadding key={index}>
-              <ListItemButton
-                id={item.workspace_id}
-                onClick={() => {
-                  props.setWorkSpaceId(item.workspace_id);
-                  console.log(props.workSpace_id);
-                  handelShowRequests(item.workspace_id);
-                }}
-              >
-                <ListItemIcon >
-                  <PersonAddIcon />
-                </ListItemIcon>
-                <ListItemText primary={item.workspace_name} />
-                <ListItemIcon >
-                  <DeleteIcon onClick={() => deleteItem(item)} />
-                </ListItemIcon>
-              </ListItemButton>
-            </ListItem>
-                <div id={`request-${item.workspace_id}`} className='saved-request-list-item'>
-                {savedRequests   ? savedRequests.map((child, index) => {
-          return (
-            child.workspace_id == item.workspace_id ? 
-            <ListItem disablePadding key={index}
-            >
-              <ListItemButton
-                id={child.workspace_id}
-              >
-               
-                <ListItemText primary={`${child.method_name} ${child.url_name}`} />
-                <ListItemIcon >
-                  <DeleteIcon onClick={() => deleteRequest(child)} />
-                </ListItemIcon>
-              </ListItemButton>
-            </ListItem> : null
+              <ListItem disablePadding key={index}>
+                <ListItemButton
+                  id={item.workspace_id}
+                  onClick={() => {
+                    props.setWorkSpaceId(item.workspace_id);
+                    console.log(props.workSpace_id);
+                    handelShowRequests(item.workspace_id);
+                  }}
+                >
+                  <ListItemIcon >
+                    <PersonAddIcon onClick={showModal} />
+                    <MDBModal show={friendModal} setShow={setFriendModal} tabIndex='-1'>
+                      <MDBModalDialog size='sm'>
+                        <MDBModalContent>
+                          <MDBModalHeader>
+                            <MDBModalTitle>Add a New User</MDBModalTitle>
 
-          )
-        }) : null}
+                          </MDBModalHeader>
+                          <MDBModalBody> <input onChange={handleChange}
+                            name="workspace_name"
+                            placeholder="Email"
+                            required
+                          /></MDBModalBody>
+                          <MDBBtn onClick={addFreind}>ADD</MDBBtn>
+                        </MDBModalContent>
+                      </MDBModalDialog>
+                    </MDBModal>
+                  </ListItemIcon>
+                  <ListItemText primary={item.workspace_name} />
+                  <ListItemIcon >
+                    <DeleteIcon onClick={() => deleteItem(item)} />
+                  </ListItemIcon>
+                </ListItemButton>
+              </ListItem>
+              <div id={`request-${item.workspace_id}`} className='saved-request-list-item'>
+                {savedRequests ? savedRequests.map((child, index) => {
+                  return (
+                    child.workspace_id == item.workspace_id ?
+                      <ListItem disablePadding key={index}
+                      >
+                        <ListItemButton
+                          id={child.workspace_id}
+                        >
 
-                </div>
-</>
+                          <ListItemText primary={`${child.method_name} ${child.url_name}`} />
+                          <ListItemIcon >
+                            <DeleteIcon onClick={() => deleteRequest(child)} />
+                          </ListItemIcon>
+                        </ListItemButton>
+                      </ListItem> : null
+
+                  )
+                }) : null}
+
+              </div>
+            </>
           )
         }) : null}
       </div>
@@ -201,14 +221,3 @@ export default function Workspace(props) {
 
 
 
-// <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
-//   <MDBModalDialog size='sm'>
-//     <MDBModalContent>
-//       <MDBModalHeader>
-//         <MDBModalTitle>Add a New User</MDBModalTitle>
-//         <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
-//       </MDBModalHeader>
-//       <MDBModalBody>...</MDBModalBody>
-//     </MDBModalContent>
-//   </MDBModalDialog>
-// </MDBModal>
