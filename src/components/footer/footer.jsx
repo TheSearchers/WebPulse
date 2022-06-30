@@ -1,7 +1,7 @@
 
 import React from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import logo from '../assets/logoGif.gif';
+
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="w-full mt-24 bg-slate-900 text-gray-300 py-y px-2">
       <div className="max-w-[1240px] mx-auto flex gap-3 border-b-2 border-gray-600 py-8 top-footer">
         <div className="footer-about">
-          <img style={{width : '100px'}} src={logo} alt="" />
+          <logo>GetDude</logo>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab provident earum laboriosam assumenda saepe amet omnis perferendis iste? Repellat cum nisi natus reiciendis similique eveniet id velit assumenda laborum perferendis.</p>
         </div>
 

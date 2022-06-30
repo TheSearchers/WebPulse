@@ -2,14 +2,11 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useContext } from "react";
 import { When } from "react-if";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
 import { LoginContext } from "../Auth/auth";
-import logo from '../assets/logoGif.gif';
+
 
 
 export default function ButtonAppBar(props) {
@@ -22,7 +19,7 @@ export default function ButtonAppBar(props) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar className="header-bar" sx={{ backgroundColor: "#212121" }}>
-          <img src = {logo} alt = "/" />
+          <logo>GetDude</logo>
           <nav className="flex gap-3 menue">
             <a href = '/' > Home </a>
             <a href = '/getdude' > getDude </a>
