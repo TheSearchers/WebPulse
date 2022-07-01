@@ -82,12 +82,12 @@ export default function Workspace(props) {
     handelShowRequests(props.workspace_id)
     getWorkSpaces()
   }
-  async function addFreind(e) {
-    e.preventDefault()
-    console.log("kkkkkkk", props.workspace_id);
+  async function addFreind(val) {
+    // e.preventDefault()
+    console.log("kkkkkkk", val);
     const res = await axios({
       method: 'post',
-      url: `${auth.API}/workspace-addfriend/${props.workspace_id}`,
+      url: `${auth.API}/workspace-addfriend/${val}`,
       headers: {
 
         "Authorization": `Bearer ${cookie.load("userData").token}`,
@@ -177,7 +177,7 @@ export default function Workspace(props) {
                             placeholder="Email"
                             required
                           /></MDBModalBody>
-                          <MDBBtn onClick={addFreind}>ADD</MDBBtn>
+                          <MDBBtn onClick={(e)=>addFreind(item.workspace_id)}>ADD</MDBBtn>
                         </MDBModalContent>
                       </MDBModalDialog>
                     </MDBModal>

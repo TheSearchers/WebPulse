@@ -6,7 +6,7 @@ import cookie from "react-cookies";
 import base64 from "base-64";
 import swal from "sweetalert";
 
-const API = `http://localhost:3001`;
+const API = `https://web-pulse-api.herokuapp.com`;
 export const LoginContext = React.createContext();
 
 export default function LoginProvider(props) {

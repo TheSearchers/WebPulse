@@ -35,7 +35,7 @@ export default function ButtonAppBar(props) {
           </When>
           <When condition={auth.loggedIn}>
           { auth.currUser != "unnamed" ?
-              props.submit(auth.currUser) : props.submit("")
+              props.submit(auth.currUser) : null
             }
             <Button color="inherit" onClick={()=>
           {
